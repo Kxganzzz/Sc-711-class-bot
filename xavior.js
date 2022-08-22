@@ -4800,7 +4800,7 @@ let btn = [{
             break
                    
             case 'menu': case 'help': case '?': {
-                anu = `${ucapanWaktu} BebanðŸ™\n\nI Am ${global.namabot}, Bot Ini Gak Secanggih Bot Ditahun 3000an.\n\nKarna ${global.namabot} Adalah Hasil Begadang yudipermana.\n\nKalau Makai Botnya Tapi Ngelag, Itu Karna Kamu nya WibuðŸ—¿`
+                anu = `${ucapanWaktu} Anggota 7.11 ðŸ™\n\nI Am ${global.namabot}, Bot Ini Khusus Class 7.11.\n\nKarna ${global.namabot} Adalah Hasil Begadang yudipermana.\n\nKalau Makai Botnya Tapi Ngelag, Itu Karna Kamu nya Wibu ðŸ—¿`
                 let btn = [{
                                 urlButton: {
                                     displayText: 'My Youtubeï¸',
