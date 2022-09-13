@@ -60,7 +60,7 @@ module.exports = xavior = async (xavior, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
         var budy = (typeof m.text == 'string' ? m.text : '')
-        var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
+        var prefix = prefa ? /^[Â°â€¢Ï€Ã·Ã—Â¶âˆ†Â£Â¢â‚¬Â¥Â®â„¢+âœ“_=|~!?@#$%^&.Â©^]/gi.test(body) ? body.match(/^[Â°â€¢Ï€Ã·Ã—Â¶âˆ†Â£Â¢â‚¬Â¥Â®â„¢+âœ“_=|~!?@#$%^&.Â©^]/gi)[0] : "" : prefa ?? global.prefix
         const isCmd = body.startsWith(prefix)
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
@@ -77,25 +77,25 @@ module.exports = xavior = async (xavior, m, chatUpdate, store) => {
  // rubah jika menggunakan heroku karna jam nya menggunakan gmt
         const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
         if(time2 < "23:59:00"){
-        var ucapanWaktu = 'Selamat Malam 🏙️'
+        var ucapanWaktu = 'Selamat Malam ðŸ™ï¸'
 }
         if(time2 < "19:00:00"){
-        var ucapanWaktu = 'Selamat Petang 🌆'
+        var ucapanWaktu = 'Selamat Petang ðŸŒ†'
 }
         if(time2 < "18:00:00"){
-        var ucapanWaktu = 'Selamat Sore 🌇'
+        var ucapanWaktu = 'Selamat Sore ðŸŒ‡'
 }
         if(time2 < "15:00:00"){
-        var ucapanWaktu = 'Selamat Siang 🌤️'
+        var ucapanWaktu = 'Selamat Siang ðŸŒ¤ï¸'
 }
         if(time2 < "10:00:00"){
-        var ucapanWaktu = 'Selamat Pagi 🌄'
+        var ucapanWaktu = 'Selamat Pagi ðŸŒ„'
 }
         if(time2 < "05:00:00"){
-        var ucapanWaktu = 'Selamat Subuh 🌆'
+        var ucapanWaktu = 'Selamat Subuh ðŸŒ†'
 }
         if(time2 < "03:00:00"){
-        var ucapanWaktu = 'Selamat Tengah Malam 🌃'
+        var ucapanWaktu = 'Selamat Tengah Malam ðŸŒƒ'
 }
 	
         // Group
@@ -190,7 +190,7 @@ _sewa.expiredCheck(xavior, sewa)
 	    let setting = global.db.data.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
-		await xavior.setStatus(`${'©XaviorOfc'} | Runtime : ${runtime(uptime)}`)
+		await xavior.setStatus(`${'Â©XaviorOfc'} | Runtime : ${runtime(uptime)}`)
 		setting.status = new Date() * 1
 	    }
 	}
@@ -198,7 +198,7 @@ _sewa.expiredCheck(xavior, sewa)
 	  // Anti Link
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
-        m.reply(`「 ANTI LINK 」\n\nKamu terdeteksi mengirim link group, maaf kamu akan di kick !`)
+        m.reply(`ã€Œ ANTI LINK ã€\n\nKamu terdeteksi mengirim link group, maaf kamu akan di kick !`)
         if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
         let gclink = (`https://chat.whatsapp.com/`+await xavior.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
@@ -261,36 +261,36 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             kuis = true
             jawaban = tebaklagu[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], `🎮 Tebak Lagu 🎮\n\nJawaban Benar🎉\n\nKukira Cupu Ternyata Suhu😎\n\nIngin bermain lagi? tekan button dibawah`, '©BOT711', m)
+                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], `ðŸŽ® Tebak Lagu ðŸŽ®\n\nJawaban BenarðŸŽ‰\n\nKukira Cupu Ternyata SuhuðŸ˜Ž\n\nIngin bermain lagi? tekan button dibawah`, 'Â©BOT711', m)
                 delete tebaklagu[m.sender.split('@')[0]]
-            } else m.reply('*😏 Jawaban Lu Salah Bng!*')
+            } else m.reply('*ðŸ˜ Jawaban Lu Salah Bng!*')
         }
 
         if (kuismath.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
             kuis = true
             jawaban = kuismath[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await m.reply(`🎮 Kuis Matematika  🎮\n\nJawaban Benar🎉\n\nKukira Cupu Ternyata Suhu😎\n\nIngin bermain lagi? kirim ${prefix}math mode`)
+                await m.reply(`ðŸŽ® Kuis Matematika  ðŸŽ®\n\nJawaban BenarðŸŽ‰\n\nKukira Cupu Ternyata SuhuðŸ˜Ž\n\nIngin bermain lagi? kirim ${prefix}math mode`)
                 delete kuismath[m.sender.split('@')[0]]
-            } else m.reply('*😏 Jawaban Lu Salah Bng!*')
+            } else m.reply('*ðŸ˜ Jawaban Lu Salah Bng!*')
         }
 
         if (tebakgambar.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
             kuis = true
             jawaban = tebakgambar[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `🎮 Tebak Gambar 🎮\n\nJawaban Benar🎉\n\nKukira Cupu Ternyata Suhu😎\n\nIngin bermain lagi? tekan button dibawah`, '©BOT711', m)
+                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `ðŸŽ® Tebak Gambar ðŸŽ®\n\nJawaban BenarðŸŽ‰\n\nKukira Cupu Ternyata SuhuðŸ˜Ž\n\nIngin bermain lagi? tekan button dibawah`, 'Â©BOT711', m)
                 delete tebakgambar[m.sender.split('@')[0]]
-            } else m.reply('*😏 Jawaban Lu Salah Bng!*')
+            } else m.reply('*ðŸ˜ Jawaban Lu Salah Bng!*')
         }
 
         if (tebakkata.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
             kuis = true
             jawaban = tebakkata[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `🎮 Tebak Kata 🎮\n\nJawaban Benar🎉\n\nKukira Cupu Ternyata Suhu😎\n\nIngin bermain lagi? tekan button dibawah`, '©BOT711', m)
+                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `ðŸŽ® Tebak Kata ðŸŽ®\n\nJawaban BenarðŸŽ‰\n\nKukira Cupu Ternyata SuhuðŸ˜Ž\n\nIngin bermain lagi? tekan button dibawah`, 'Â©BOT711', m)
                 delete tebakkata[m.sender.split('@')[0]]
-            } else m.reply('*😏 Jawaban Lu Salah Bng!*')
+            } else m.reply('*ðŸ˜ Jawaban Lu Salah Bng!*')
         }
 
         if (caklontong.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
@@ -298,37 +298,37 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             jawaban = caklontong[m.sender.split('@')[0]]
 	    deskripsi = caklontong_desk[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `🎮 Cak Lontong 🎮\n\nJawaban Benar🎉\n\nKukira Cupu Ternyata Suhu😎\n*${deskripsi}*\n\nIngin bermain lagi? tekan button dibawah`, '©BOT711', m)
+                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `ðŸŽ® Cak Lontong ðŸŽ®\n\nJawaban BenarðŸŽ‰\n\nKukira Cupu Ternyata SuhuðŸ˜Ž\n*${deskripsi}*\n\nIngin bermain lagi? tekan button dibawah`, 'Â©BOT711', m)
                 delete caklontong[m.sender.split('@')[0]]
 		delete caklontong_desk[m.sender.split('@')[0]]
-            } else m.reply('*😏 Jawaban Lu Salah Bng!*')
+            } else m.reply('*ðŸ˜ Jawaban Lu Salah Bng!*')
         }
 
         if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
             kuis = true
             jawaban = tebakkalimat[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `🎮 Tebak Kalimat 🎮\n\nJawaban Benar🎉\n\nKukira Cupu Ternyata Suhu😎\n\nIngin bermain lagi? tekan button dibawah`, '©BOT711', m)
+                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `ðŸŽ® Tebak Kalimat ðŸŽ®\n\nJawaban BenarðŸŽ‰\n\nKukira Cupu Ternyata SuhuðŸ˜Ž\n\nIngin bermain lagi? tekan button dibawah`, 'Â©BOT711', m)
                 delete tebakkalimat[m.sender.split('@')[0]]
-            } else m.reply('*😏 Jawaban Lu Salah Bng!*')
+            } else m.reply('*ðŸ˜ Jawaban Lu Salah Bng!*')
         }
 
         if (tebaklirik.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
             kuis = true
             jawaban = tebaklirik[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `🎮 Tebak Lirik 🎮\n\nJawaban Benar🎉\n\nKukira Cupu Ternyata Suhu😎\n\nIngin bermain lagi? tekan button dibawah`, '©BOT711', m)
+                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `ðŸŽ® Tebak Lirik ðŸŽ®\n\nJawaban BenarðŸŽ‰\n\nKukira Cupu Ternyata SuhuðŸ˜Ž\n\nIngin bermain lagi? tekan button dibawah`, 'Â©BOT711', m)
                 delete tebaklirik[m.sender.split('@')[0]]
-            } else m.reply('*😏 Jawaban Lu Salah Bng!*')
+            } else m.reply('*ðŸ˜ Jawaban Lu Salah Bng!*')
         }
 	    
 	if (tebaktebakan.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
             kuis = true
             jawaban = tebaktebakan[m.sender.split('@')[0]]
             if (budy.toLowerCase() == jawaban) {
-                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak tebakan', buttonText: { displayText: 'Tebak Tebakan' }, type: 1 }], `🎮 Tebak Tebakan 🎮\n\nJawaban Benar🎉\n\nKukira Cupu Ternyata Suhu😎\n\nIngin bermain lagi? tekan button dibawah`, '©BOT711', m)
+                await xavior.sendButtonText(m.chat, [{ buttonId: 'tebak tebakan', buttonText: { displayText: 'Tebak Tebakan' }, type: 1 }], `ðŸŽ® Tebak Tebakan ðŸŽ®\n\nJawaban BenarðŸŽ‰\n\nKukira Cupu Ternyata SuhuðŸ˜Ž\n\nIngin bermain lagi? tekan button dibawah`, 'Â©BOT711', m)
                 delete tebaktebakan[m.sender.split('@')[0]]
-            } else m.reply('*😏 Jawaban Lu Salah Bng!*')
+            } else m.reply('*ðŸ˜ Jawaban Lu Salah Bng!*')
         }
         
         //TicTacToe
@@ -358,17 +358,17 @@ ${Array.from(room.jawaban, (jawaban, index) => {
 	    else if (room.game.board === 511) isTie = true
 	    let arr = room.game.render().map(v => {
 	    return {
-	    X: '❌',
-	    O: '⭕',
-	    1: '1️⃣',
-	    2: '2️⃣',
-	    3: '3️⃣',
-	    4: '4️⃣',
-	    5: '5️⃣',
-	    6: '6️⃣',
-	    7: '7️⃣',
-	    8: '8️⃣',
-	    9: '9️⃣',
+	    X: 'âŒ',
+	    O: 'â­•',
+	    1: '1ï¸âƒ£',
+	    2: '2ï¸âƒ£',
+	    3: '3ï¸âƒ£',
+	    4: '4ï¸âƒ£',
+	    5: '5ï¸âƒ£',
+	    6: '6ï¸âƒ£',
+	    7: '7ï¸âƒ£',
+	    8: '8ï¸âƒ£',
+	    9: '9ï¸âƒ£',
 	    }[v]
 	    })
 	    if (isSurrender) {
@@ -382,9 +382,9 @@ ${arr.slice(0, 3).join('')}
 ${arr.slice(3, 6).join('')}
 ${arr.slice(6).join('')}
 
-${isWin ? `@${winner.split('@')[0]} Menang!` : isTie ? `Game berakhir` : `Giliran ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
-❌: @${room.game.playerX.split('@')[0]}
-⭕: @${room.game.playerO.split('@')[0]}
+${isWin ? `@${winner.split('@')[0]} Menang!` : isTie ? `Game berakhir` : `Giliran ${['âŒ', 'â­•'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
+âŒ: @${room.game.playerX.split('@')[0]}
+â­•: @${room.game.playerO.split('@')[0]}
 
 Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
 	    if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
@@ -419,8 +419,8 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
 
 Silahkan pilih suit di chat masing"
 klik https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] })
-	    if (!roof.pilih) xavior.sendText(roof.p, `Silahkan pilih \n\nBatu🗿\nKertas📄\nGunting✂️`, m)
-	    if (!roof.pilih2) xavior.sendText(roof.p2, `Silahkan pilih \n\nBatu🗿\nKertas📄\nGunting✂️`, m)
+	    if (!roof.pilih) xavior.sendText(roof.p, `Silahkan pilih \n\nBatuðŸ—¿\nKertasðŸ“„\nGuntingâœ‚ï¸`, m)
+	    if (!roof.pilih2) xavior.sendText(roof.p2, `Silahkan pilih \n\nBatuðŸ—¿\nKertasðŸ“„\nGuntingâœ‚ï¸`, m)
 	    roof.waktu_milih = setTimeout(() => {
 	    if (!roof.pilih && !roof.pilih2) xavior.sendText(m.chat, `Kedua pemain tidak niat main,\nSuit dibatalkan`)
 	    else if (!roof.pilih || !roof.pilih2) {
@@ -513,17 +513,17 @@ Selama ${clockString(new Date - user.afkTime)}
             room.state = 'PLAYING'
             let arr = room.game.render().map(v => {
             return {
-            X: '❌',
-            O: '⭕',
-            1: '1️⃣',
-            2: '2️⃣',
-            3: '3️⃣',
-            4: '4️⃣',
-            5: '5️⃣',
-            6: '6️⃣',
-            7: '7️⃣',
-            8: '8️⃣',
-            9: '9️⃣',
+            X: 'âŒ',
+            O: 'â­•',
+            1: '1ï¸âƒ£',
+            2: '2ï¸âƒ£',
+            3: '3ï¸âƒ£',
+            4: '4ï¸âƒ£',
+            5: '5ï¸âƒ£',
+            6: '6ï¸âƒ£',
+            7: '7ï¸âƒ£',
+            8: '8ï¸âƒ£',
+            9: '9ï¸âƒ£',
             }[v]
             })
             let str = `Room ID: ${room.id}
@@ -558,7 +558,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             delete this.game
             xavior.sendText(m.chat, `Berhasil delete session TicTacToe`, m)
             } else if (!this.game) {
-            m.reply(`Session TicTacToe🎮 tidak ada`)
+            m.reply(`Session TicTacToeðŸŽ® tidak ada`)
             } else throw '?'
             } catch (e) {
             m.reply('rusak')
@@ -608,15 +608,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
@@ -676,7 +676,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebaklagu.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklagu[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '©BOT711', m)
+                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lagu', buttonText: { displayText: 'Tebak Lagu' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklagu[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â©BOT711', m)
                     delete tebaklagu[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'gambar') {
@@ -689,7 +689,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakgambar[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '©BOT711', m)
+                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakgambar[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â©BOT711', m)
                     delete tebakgambar[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'kata') {
@@ -702,7 +702,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebakkata.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkata[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '©BOT711', m)
+                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak kata', buttonText: { displayText: 'Tebak Kata' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkata[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â©BOT711', m)
                     delete tebakkata[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'kalimat') {
@@ -715,7 +715,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebakkalimat.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkalimat[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '©BOT711', m)
+                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak kalimat', buttonText: { displayText: 'Tebak Kalimat' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebakkalimat[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â©BOT711', m)
                     delete tebakkalimat[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'lirik') {
@@ -728,7 +728,7 @@ let btn = [{
                     await sleep(60000)
                     if (tebaklirik.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklirik[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '©BOT711', m)
+                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lirik', buttonText: { displayText: 'Tebak Lirik' }, type: 1 }], `Waktu Habis\nJawaban:  ${tebaklirik[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â©BOT711', m)
                     delete tebaklirik[m.sender.split('@')[0]]
                     }
                 } else if (args[0] === 'lontong') {
@@ -742,7 +742,7 @@ let btn = [{
                     await sleep(60000)
                     if (caklontong.hasOwnProperty(m.sender.split('@')[0])) {
                     console.log("Jawaban: " + result.jawaban)
-                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `Waktu Habis\nJawaban:  ${caklontong[m.sender.split('@')[0]]}\nDeskripsi : ${caklontong_desk[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, '©BOT711', m)
+                    xavior.sendButtonText(m.chat, [{ buttonId: 'tebak lontong', buttonText: { displayText: 'Tebak Lontong' }, type: 1 }], `Waktu Habis\nJawaban:  ${caklontong[m.sender.split('@')[0]]}\nDeskripsi : ${caklontong_desk[m.sender.split('@')[0]]}\n\nIngin bermain? tekan button dibawah`, 'Â©BOT711', m)
                     delete caklontong[m.sender.split('@')[0]]
 		    delete caklontong_desk[m.sender.split('@')[0]]
                     }
@@ -770,14 +770,14 @@ let btn = [{
             let member = participants.map(u => u.id)
             let me = m.sender
             let jodoh = member[Math.floor(Math.random() * member.length)]
-            let jawab = `👫Jodoh mu adalah
+            let jawab = `ðŸ‘«Jodoh mu adalah
 
-@${me.split('@')[0]} ❤️ @${jodoh.split('@')[0]}`
+@${me.split('@')[0]} â¤ï¸ @${jodoh.split('@')[0]}`
             let ments = [me, jodoh]
             let buttons = [
                         { buttonId: 'jodohku', buttonText: { displayText: 'Jodohku' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(m.chat, buttons, jawab, '©BOT711', m, {mentions: ments})
+                    await xavior.sendButtonText(m.chat, buttons, jawab, 'Â©BOT711', m, {mentions: ments})
             }
             break
             case 'jadian': {
@@ -785,14 +785,14 @@ let btn = [{
             let member = participants.map(u => u.id)
             let orang = member[Math.floor(Math.random() * member.length)]
             let jodoh = member[Math.floor(Math.random() * member.length)]
-            let jawab = `Ciee yang Jadian💖 Jangan lupa pajak jadiannya🐤
+            let jawab = `Ciee yang JadianðŸ’– Jangan lupa pajak jadiannyaðŸ¤
 
-@${orang.split('@')[0]} ❤️ @${jodoh.split('@')[0]}`
+@${orang.split('@')[0]} â¤ï¸ @${jodoh.split('@')[0]}`
             let menst = [orang, jodoh]
             let buttons = [
                         { buttonId: 'jadian', buttonText: { displayText: 'Jodohku' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(m.chat, buttons, jawab, '©BOT711', m, {mentions: menst})
+                    await xavior.sendButtonText(m.chat, buttons, jawab, 'Â@yudipermana', m, {mentions: menst})
             }
             break
             case 'react': {
@@ -825,7 +825,7 @@ let btn = [{
                if (!text) throw `Example : ${prefix + command} packname|author`
           global.packname = text.split("|")[0]
           global.author = text.split("|")[1]
-          m.reply(`Exif berhasil diubah menjadi\n\n⭔ Packname : ${global.packname}\n⭔ Author : ${global.author}`)
+          m.reply(`Exif berhasil diubah menjadi\n\nâ­” Packname : ${global.packname}\nâ­” Author : ${global.author}`)
             }
             break
 	case 'kick': {
@@ -913,11 +913,11 @@ let btn = [{
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-let teks = `══✪〘 *👥 Tag All* 〙✪══
+let teks = `â•â•âœªã€˜ *ðŸ‘¥ Tag All* ã€™âœªâ•â•
  
- ➲ *Pesan : ${q ? q : 'kosong'}*\n\n`
+ âž² *Pesan : ${q ? q : 'kosong'}*\n\n`
                 for (let mem of participants) {
-                teks += `⭔ @${mem.id.split('@')[0]}\n`
+                teks += `â­” @${mem.id.split('@')[0]}\n`
                 }
                 xavior.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
@@ -945,7 +945,7 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 let anu = await styletext(text)
                 let teks = `Srtle Text From ${text}\n\n`
                 for (let i of anu) {
-                    teks += `⭔ *${i.name}* : ${i.result}\n\n`
+                    teks += `â­” *${i.name}* : ${i.result}\n\n`
                 }
                 m.reply(teks)
 	    }
@@ -959,33 +959,33 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
             await sleep(1000)
             upvote = vote[m.chat][1]
             devote = vote[m.chat][2]
-            teks_vote = `*「 VOTE 」*
+            teks_vote = `*ã€Œ VOTE ã€*
 
 *Alasan:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${vote[m.chat][1].length}
-│
-│ 
-└────
+â”Œã€” UPVOTE ã€•
+â”‚ 
+â”œ Total: ${vote[m.chat][1].length}
+â”‚
+â”‚ 
+â””â”€â”€â”€â”€
 
-┌〔 DEVOTE 〕
-│ 
-├ Total: ${vote[m.chat][2].length}
-│
-│ 
-└────
+â”Œã€” DEVOTE ã€•
+â”‚ 
+â”œ Total: ${vote[m.chat][2].length}
+â”‚
+â”‚ 
+â””â”€â”€â”€â”€
 
 *${prefix}hapusvote* - untuk menghapus vote`
 let buttonsVote = [
-  {buttonId: `${prefix}upvote`, buttonText: {displayText: '𝚄𝙿𝚅𝙾𝚃𝙴'}, type: 1},
-  {buttonId: `${prefix}devote`, buttonText: {displayText: '𝙳𝙴𝚅𝙾𝚃𝙴'}, type: 1}
+  {buttonId: `${prefix}upvote`, buttonText: {displayText: 'ðš„ð™¿ðš…ð™¾ðšƒð™´'}, type: 1},
+  {buttonId: `${prefix}devote`, buttonText: {displayText: 'ð™³ð™´ðš…ð™¾ðšƒð™´'}, type: 1}
 ]
 
             let buttonMessageVote = {
                 text: teks_vote,
-                footer: '©BOT711',
+                footer: 'Â©BOT711',
                 buttons: buttonsVote,
                 headerType: 1
             }
@@ -1000,33 +1000,33 @@ let buttonsVote = [
             if (wasVote) throw 'Kamu Sudah Vote'
             vote[m.chat][1].push(m.sender)
             menvote = vote[m.chat][1].concat(vote[m.chat][2])
-            teks_vote = `*「 VOTE 」*
+            teks_vote = `*ã€Œ VOTE ã€*
 
 *Alasan:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${vote[m.chat][1].length}
-${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+â”Œã€” UPVOTE ã€•
+â”‚ 
+â”œ Total: ${vote[m.chat][1].length}
+${vote[m.chat][1].map((v, i) => `â”œ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+â”‚ 
+â””â”€â”€â”€â”€
 
-┌〔 DEVOTE 〕
-│ 
-├ Total: ${vote[m.chat][2].length}
-${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+â”Œã€” DEVOTE ã€•
+â”‚ 
+â”œ Total: ${vote[m.chat][2].length}
+${vote[m.chat][2].map((v, i) => `â”œ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+â”‚ 
+â””â”€â”€â”€â”€
 
 *${prefix}hapusvote* - untuk menghapus vote`
             let buttonsUpvote = [
-              {buttonId: `${prefix}upvote`, buttonText: {displayText: '𝚄𝙿𝚅𝙾𝚃𝙴'}, type: 1},
-              {buttonId: `${prefix}devote`, buttonText: {displayText: '𝙳𝙴𝚅𝙾𝚃𝙴'}, type: 1}
+              {buttonId: `${prefix}upvote`, buttonText: {displayText: 'ðš„ð™¿ðš…ð™¾ðšƒð™´'}, type: 1},
+              {buttonId: `${prefix}devote`, buttonText: {displayText: 'ð™³ð™´ðš…ð™¾ðšƒð™´'}, type: 1}
             ]
 
             let buttonMessageUpvote = {
                 text: teks_vote,
-                footer: '©BOT711',
+                footer: 'Â©BOT711',
                 buttons: buttonsUpvote,
                 headerType: 1,
                 mentions: menvote
@@ -1042,33 +1042,33 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
             if (wasVote) throw 'Kamu Sudah Vote'
             vote[m.chat][2].push(m.sender)
             menvote = vote[m.chat][1].concat(vote[m.chat][2])
-            teks_vote = `*「 VOTE 」*
+            teks_vote = `*ã€Œ VOTE ã€*
 
 *Alasan:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${vote[m.chat][1].length}
-${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+â”Œã€” UPVOTE ã€•
+â”‚ 
+â”œ Total: ${vote[m.chat][1].length}
+${vote[m.chat][1].map((v, i) => `â”œ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+â”‚ 
+â””â”€â”€â”€â”€
 
-┌〔 DEVOTE 〕
-│ 
-├ Total: ${vote[m.chat][2].length}
-${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+â”Œã€” DEVOTE ã€•
+â”‚ 
+â”œ Total: ${vote[m.chat][2].length}
+${vote[m.chat][2].map((v, i) => `â”œ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+â”‚ 
+â””â”€â”€â”€â”€
 
 *${prefix}hapusvote* - untuk menghapus vote`
             let buttonsDevote = [
-              {buttonId: `${prefix}upvote`, buttonText: {displayText: '𝚄𝙿𝚅𝙾𝚃𝙴'}, type: 1},
-              {buttonId: `${prefix}devote`, buttonText: {displayText: '𝙳𝙴𝚅𝙾𝚃𝙴'}, type: 1}
+              {buttonId: `${prefix}upvote`, buttonText: {displayText: 'ðš„ð™¿ðš…ð™¾ðšƒð™´'}, type: 1},
+              {buttonId: `${prefix}devote`, buttonText: {displayText: 'ð™³ð™´ðš…ð™¾ðšƒð™´'}, type: 1}
             ]
 
             let buttonMessageDevote = {
                 text: teks_vote,
-                footer: '©BOT711',
+                footer: 'Â©BOT711',
                 buttons: buttonsDevote,
                 headerType: 1,
                 mentions: menvote
@@ -1080,28 +1080,28 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 case 'cekvote':
 if (!m.isGroup) throw mess.group
 if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
-teks_vote = `*「 VOTE 」*
+teks_vote = `*ã€Œ VOTE ã€*
 
 *Alasan:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${upvote.length}
-${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+â”Œã€” UPVOTE ã€•
+â”‚ 
+â”œ Total: ${upvote.length}
+${vote[m.chat][1].map((v, i) => `â”œ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+â”‚ 
+â””â”€â”€â”€â”€
 
-┌〔 DEVOTE 〕
-│ 
-├ Total: ${devote.length}
-${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+â”Œã€” DEVOTE ã€•
+â”‚ 
+â”œ Total: ${devote.length}
+${vote[m.chat][2].map((v, i) => `â”œ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
+â”‚ 
+â””â”€â”€â”€â”€
 
 *${prefix}hapusvote* - untuk menghapus vote
 
 
-©${xavior.user.id}
+Â©${xavior.user.id}
 `
 xavior.sendTextWithMentions(m.chat, teks_vote, m)
 break
@@ -1125,7 +1125,7 @@ break
                         { buttonId: 'group open', buttonText: { displayText: 'Open' }, type: 1 },
                         { buttonId: 'group close', buttonText: { displayText: 'Close' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(m.chat, buttons, `Mode Group`, '©BOT711', m)
+                    await xavior.sendButtonText(m.chat, buttons, `Mode Group`, 'Â©BOT711', m)
 
              }
             }
@@ -1143,7 +1143,7 @@ break
                         { buttonId: 'editinfo open', buttonText: { displayText: 'Open' }, type: 1 },
                         { buttonId: 'editinfo close', buttonText: { displayText: 'Close' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(m.chat, buttons, `Mode Edit Info`, '©BOT711', m)
+                    await xavior.sendButtonText(m.chat, buttons, `Mode Edit Info`, 'Â©BOT711', m)
 
             }
             }
@@ -1165,7 +1165,7 @@ break
                         { buttonId: 'antilink on', buttonText: { displayText: 'On' }, type: 1 },
                         { buttonId: 'antilink off', buttonText: { displayText: 'Off' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(m.chat, buttons, `Mode Antilink`, '©XaviorOfc', m)
+                    await xavior.sendButtonText(m.chat, buttons, `Mode Antilink`, 'Â©XaviorOfc', m)
                 }
              }
              break
@@ -1176,17 +1176,17 @@ break
                 if (args[0] === "on") {
                 if (db.data.chats[m.chat].mute) return m.reply(`Sudah Aktif Sebelumnya`)
                 db.data.chats[m.chat].mute = true
-                m.reply(`${'©XaviorOfc'} telah di mute di group ini !`)
+                m.reply(`${'Â©XaviorOfc'} telah di mute di group ini !`)
                 } else if (args[0] === "off") {
                 if (!db.data.chats[m.chat].mute) return m.reply(`Sudah Tidak Aktif Sebelumnya`)
                 db.data.chats[m.chat].mute = false
-                m.reply(`${'©XaviorOfc'} telah di unmute di group ini !`)
+                m.reply(`${'Â©XaviorOfc'} telah di unmute di group ini !`)
                 } else {
                  let buttons = [
                         { buttonId: 'mute on', buttonText: { displayText: 'On' }, type: 1 },
                         { buttonId: 'mute off', buttonText: { displayText: 'Off' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(m.chat, buttons, `Mute Bot`, '©XaviorOfc', m)
+                    await xavior.sendButtonText(m.chat, buttons, `Mute Bot`, 'Â©XaviorOfc', m)
                 }
              }
              break
@@ -1221,7 +1221,7 @@ break
                 ]
                 },
                 ]
-                xavior.sendListMsg(m.chat, `Please select the following Ephemeral Options List !`, '©XaviorOfc', `Hello Admin ${groupMetadata.subject}`, `Click Here`, sections, m)
+                xavior.sendListMsg(m.chat, `Please select the following Ephemeral Options List !`, 'Â©XaviorOfc', `Hello Admin ${groupMetadata.subject}`, `Click Here`, sections, m)
                 }
             }
             break
@@ -1243,7 +1243,7 @@ break
                     await sleep(1500)
                     let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -1267,8 +1267,8 @@ break
                                     id: 'command'
                                 }
                             }]
-                      let txt = `「 Broadcast Bot 」\n\n${text}`
-                      xavior.send5ButImg(i, txt, '©XaviorOfc', global.thumb, btn)
+                      let txt = `ã€Œ Broadcast Bot ã€\n\n${text}`
+                      xavior.send5ButImg(i, txt, 'Â©XaviorOfc', global.thumb, btn)
                     }
                 m.reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
             }
@@ -1282,7 +1282,7 @@ break
 		    await sleep(1500)
 		    let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -1306,8 +1306,8 @@ break
                                     id: 'command'
                                 }
                             }]
-                      let txt = `「 Broadcast Bot 」\n\n${text}`
-                      xavior.send5ButImg(yoi, txt, '©XaviorOfc', global.thumb, btn)
+                      let txt = `ã€Œ Broadcast Bot ã€\n\n${text}`
+                      xavior.send5ButImg(yoi, txt, 'Â©XaviorOfc', global.thumb, btn)
 		}
 		m.reply('Sukses Broadcast')
             }
@@ -1321,8 +1321,8 @@ break
                     let read = i.readTimestamp
                     let unread = i.receiptTimestamp
                     let waktu = read ? read : unread
-                    teks += `⭔ @${i.userJid.split('@')[0]}\n`
-                    teks += ` ┗━⭔ *Waktu :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} ⭔ *Status :* ${read ? 'Dibaca' : 'Terkirim'}\n\n`
+                    teks += `â­” @${i.userJid.split('@')[0]}\n`
+                    teks += ` â”—â”â­” *Waktu :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} â­” *Status :* ${read ? 'Dibaca' : 'Terkirim'}\n\n`
                 }
                 xavior.sendTextWithMentions(m.chat, teks, m)
             }
@@ -1336,20 +1336,20 @@ break
 	    break
             case 'listpc': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
-                 let teks = `⬣ *LIST PERSONAL CHAT*\n\nTotal Chat : ${anu.length} Chat\n\n`
+                 let teks = `â¬£ *LIST PERSONAL CHAT*\n\nTotal Chat : ${anu.length} Chat\n\n`
                  for (let i of anu) {
                      let nama = store.messages[i].array[0].pushName
-                     teks += `⬡ *Nama :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
+                     teks += `â¬¡ *Nama :* ${nama}\nâ¬¡ *User :* @${i.split('@')[0]}\nâ¬¡ *Chat :* https://wa.me/${i.split('@')[0]}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n\n`
                  }
                  xavior.sendTextWithMentions(m.chat, teks, m)
              }
              break
                 case 'listgc': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-                 let teks = `⬣ *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
+                 let teks = `â¬£ *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
                  for (let i of anu) {
                      let metadata = await xavior.groupMetadata(i)
-                     teks += `⬡ *Nama :* ${metadata.subject}\n⬡ *Owner :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\n⬡ *ID :* ${metadata.id}\n⬡ *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+                     teks += `â¬¡ *Nama :* ${metadata.subject}\nâ¬¡ *Owner :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\nâ¬¡ *ID :* ${metadata.id}\nâ¬¡ *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\nâ¬¡ *Member :* ${metadata.participants.length}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n\n`
                  }
                  xavior.sendTextWithMentions(m.chat, teks, m)
              }
@@ -1357,7 +1357,7 @@ break
              case 'listonline': case 'liston': {
                     let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
                     let online = [...Object.keys(store.presences[id]), botNumber]
-                    xavior.sendText(m.chat, 'List Online:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+                    xavior.sendText(m.chat, 'List Online:\n\n' + online.map(v => 'â­” @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
              }
              break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
@@ -1413,8 +1413,8 @@ break
         break
             case 'emojimix': {
 		let [emoji1, emoji2] = text.split`+`
-		if (!emoji1) throw `Example : ${prefix + command} 😅+🤔`
-		if (!emoji2) throw `Example : ${prefix + command} 😅+🤔`
+		if (!emoji1) throw `Example : ${prefix + command} ðŸ˜…+ðŸ¤”`
+		if (!emoji2) throw `Example : ${prefix + command} ðŸ˜…+ðŸ¤”`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 		for (let res of anu.results) {
 		    let encmedia = await xavior.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
@@ -1423,7 +1423,7 @@ break
 	    }
 	    break
 	    case 'emojimix2': {
-	    if (!text) throw `Example : ${prefix + command} 😅`
+	    if (!text) throw `Example : ${prefix + command} ðŸ˜…`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(text)}`)
 		for (let res of anu.results) {
 		    let encmedia = await xavior.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
@@ -1502,7 +1502,7 @@ break
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
-            xavior.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${'©XaviorOfc'}.mp3`}, { quoted : m })
+            xavior.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${'Â©XaviorOfc'}.mp3`}, { quoted : m })
             }
             break
             case 'tovn': case 'toptt': {
@@ -1572,7 +1572,7 @@ break
                 let teks = 'YouTube Search\n\n Result From '+text+'\n\n'
                 let no = 1
                 for (let i of search.all) {
-                    teks += `⭔ No : ${no++}\n⭔ Type : ${i.type}\n⭔ Video ID : ${i.videoId}\n⭔ Title : ${i.title}\n⭔ Views : ${i.views}\n⭔ Duration : ${i.timestamp}\n⭔ Upload At : ${i.ago}\n⭔ Author : ${i.author.name}\n⭔ Url : ${i.url}\n\n─────────────────\n\n`
+                    teks += `â­” No : ${no++}\nâ­” Type : ${i.type}\nâ­” Video ID : ${i.videoId}\nâ­” Title : ${i.title}\nâ­” Views : ${i.views}\nâ­” Duration : ${i.timestamp}\nâ­” Upload At : ${i.ago}\nâ­” Author : ${i.author.name}\nâ­” Url : ${i.url}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n\n`
                 }
                 xavior.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
             }
@@ -1583,9 +1583,9 @@ break
                 google({'query': text}).then(res => {
                 let teks = `Google Search From : ${text}\n\n`
                 for (let g of res) {
-                teks += `⭔ *Title* : ${g.title}\n`
-                teks += `⭔ *Description* : ${g.snippet}\n`
-                teks += `⭔ *Link* : ${g.link}\n\n────────────────────────\n\n`
+                teks += `â­” *Title* : ${g.title}\n`
+                teks += `â­” *Description* : ${g.snippet}\n`
+                teks += `â­” *Link* : ${g.link}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n\n`
                 } 
                 m.reply(teks)
                 })
@@ -1602,10 +1602,10 @@ break
                 ]
                 let buttonMessage = {
                     image: { url: images },
-                    caption: `*-------「 GIMAGE SEARCH 」-------*
-🤠 *Query* : ${text}
-🔗 *Media Url* : ${images}`,
-                    footer: '©XaviorOfc',
+                    caption: `*-------ã€Œ GIMAGE SEARCH ã€-------*
+ðŸ¤  *Query* : ${text}
+ðŸ”— *Media Url* : ${images}`,
+                    footer: 'Â©XaviorOfc',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1619,23 +1619,23 @@ break
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
                 let buttons = [
-                    {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
-                    {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1}
+                    {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: 'â™« Audio'}, type: 1},
+                    {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: 'â–º Video'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: anu.thumbnail },
                     caption: `
-⭔ Title : ${anu.title}
-⭔ Ext : Search
-⭔ ID : ${anu.videoId}
-⭔ Duration : ${anu.timestamp}
-⭔ Viewers : ${anu.views}
-⭔ Upload At : ${anu.ago}
-⭔ Author : ${anu.author.name}
-⭔ Channel : ${anu.author.url}
-⭔ Description : ${anu.description}
-⭔ Url : ${anu.url}`,
-                    footer: '©XaviorOfc',
+â­” Title : ${anu.title}
+â­” Ext : Search
+â­” ID : ${anu.videoId}
+â­” Duration : ${anu.timestamp}
+â­” Viewers : ${anu.views}
+â­” Upload At : ${anu.ago}
+â­” Author : ${anu.author.name}
+â­” Channel : ${anu.author.url}
+â­” Description : ${anu.description}
+â­” Url : ${anu.url}`,
+                    footer: 'Â©XaviorOfc',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1648,7 +1648,7 @@ break
                 let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
-                xavior.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, m)
+                xavior.sendImage(m.chat, media.thumb, `â­” Title : ${media.title}\nâ­” File Size : ${media.filesizeF}\nâ­” Url : ${isUrl(text)}\nâ­” Ext : MP3\nâ­” Resolusi : ${args[1] || '128kbps'}`, m)
                 xavior.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
@@ -1658,7 +1658,7 @@ break
                 let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(text, quality)
                 if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
-                xavior.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '360p'}` }, { quoted: m })
+                xavior.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `â­” Title : ${media.title}\nâ­” File Size : ${media.filesizeF}\nâ­” Url : ${isUrl(text)}\nâ­” Ext : MP3\nâ­” Resolusi : ${args[1] || '360p'}` }, { quoted: m })
             }
             break
 	    case 'getmusic': {
@@ -1671,7 +1671,7 @@ break
                 let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(urls[text - 1], quality)
                 if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
-                xavior.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${urls[text - 1]}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, m)
+                xavior.sendImage(m.chat, media.thumb, `â­” Title : ${media.title}\nâ­” File Size : ${media.filesizeF}\nâ­” Url : ${urls[text - 1]}\nâ­” Ext : MP3\nâ­” Resolusi : ${args[1] || '128kbps'}`, m)
                 xavior.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
             }
             break
@@ -1685,7 +1685,7 @@ break
                 let quality = args[1] ? args[1] : '360p'
                 let media = await ytv(urls[text - 1], quality)
                 if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
-                xavior.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${urls[text - 1]}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '360p'}` }, { quoted: m })
+                xavior.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `â­” Title : ${media.title}\nâ­” File Size : ${media.filesizeF}\nâ­” Url : ${urls[text - 1]}\nâ­” Ext : MP3\nâ­” Resolusi : ${args[1] || '360p'}` }, { quoted: m })
             }
             break
             case 'pinterest': {
@@ -1693,7 +1693,7 @@ break
 		let { pinterest } = require('./lib/scraper')
                 anu = await pinterest(text)
                 result = anu[Math.floor(Math.random() * anu.length)]
-                xavior.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
+                xavior.sendMessage(m.chat, { image: { url: result }, caption: 'â­” Media Url : '+result }, { quoted: m })
             }
             break
             case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
@@ -1715,8 +1715,8 @@ break
                 ]
                 let buttonMessage = {
                     image: { url: 'https://coffee.alexflipnote.dev/random' },
-                    caption: `☕ Random Coffe`,
-                    footer: '©XaviorOfc',
+                    caption: `â˜• Random Coffe`,
+                    footer: 'Â©XaviorOfc',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1733,8 +1733,8 @@ break
                 ]
                 let buttonMessage = {
                     image: { url: result.image[0] },
-                    caption: `⭔ Title : ${result.title}\n⭔ Category : ${result.type}\n⭔ Detail : ${result.source}\n⭔ Media Url : ${result.image[2] || result.image[1] || result.image[0]}`,
-                    footer: '©XaviorOfc',
+                    caption: `â­” Title : ${result.title}\nâ­” Category : ${result.type}\nâ­” Detail : ${result.source}\nâ­” Media Url : ${result.image[2] || result.image[1] || result.image[0]}`,
+                    footer: 'Â©XaviorOfc',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1751,8 +1751,8 @@ break
                 ]
                 let buttonMessage = {
                     image: { url: result.image },
-                    caption: `⭔ Title : ${result.title}\n⭔ Source : ${result.source}\n⭔ Media Url : ${result.image}`,
-                    footer: '©XaviorOfc',
+                    caption: `â­” Title : ${result.title}\nâ­” Source : ${result.source}\nâ­” Media Url : ${result.image}`,
+                    footer: 'Â©XaviorOfc',
                     buttons: buttons,
                     headerType: 4
                 }
@@ -1811,14 +1811,14 @@ break
                 if (!Number(text)) throw `Example : ${prefix + command} 6288292024190`
                 let anu = await primbon.nomer_hoki(Number(text))
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nomor HP :* ${anu.message.nomer_hp}\n⭔ *Angka Shuzi :* ${anu.message.angka_shuzi}\n⭔ *Energi Positif :*\n- Kekayaan : ${anu.message.energi_positif.kekayaan}\n- Kesehatan : ${anu.message.energi_positif.kesehatan}\n- Cinta : ${anu.message.energi_positif.cinta}\n- Kestabilan : ${anu.message.energi_positif.kestabilan}\n- Persentase : ${anu.message.energi_positif.persentase}\n⭔ *Energi Negatif :*\n- Perselisihan : ${anu.message.energi_negatif.perselisihan}\n- Kehilangan : ${anu.message.energi_negatif.kehilangan}\n- Malapetaka : ${anu.message.energi_negatif.malapetaka}\n- Kehancuran : ${anu.message.energi_negatif.kehancuran}\n- Persentase : ${anu.message.energi_negatif.persentase}`, m)
+                xavior.sendText(m.chat, `â­” *Nomor HP :* ${anu.message.nomer_hp}\nâ­” *Angka Shuzi :* ${anu.message.angka_shuzi}\nâ­” *Energi Positif :*\n- Kekayaan : ${anu.message.energi_positif.kekayaan}\n- Kesehatan : ${anu.message.energi_positif.kesehatan}\n- Cinta : ${anu.message.energi_positif.cinta}\n- Kestabilan : ${anu.message.energi_positif.kestabilan}\n- Persentase : ${anu.message.energi_positif.persentase}\nâ­” *Energi Negatif :*\n- Perselisihan : ${anu.message.energi_negatif.perselisihan}\n- Kehilangan : ${anu.message.energi_negatif.kehilangan}\n- Malapetaka : ${anu.message.energi_negatif.malapetaka}\n- Kehancuran : ${anu.message.energi_negatif.kehancuran}\n- Persentase : ${anu.message.energi_negatif.persentase}`, m)
             }
             break
             case 'artimimpi': case 'tafsirmimpi': {
                 if (!text) throw `Example : ${prefix + command} belanja`
                 let anu = await primbon.tafsir_mimpi(text)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Mimpi :* ${anu.message.mimpi}\n⭔ *Arti :* ${anu.message.arti}\n⭔ *Solusi :* ${anu.message.solusi}`, m)
+                xavior.sendText(m.chat, `â­” *Mimpi :* ${anu.message.mimpi}\nâ­” *Arti :* ${anu.message.arti}\nâ­” *Solusi :* ${anu.message.solusi}`, m)
             }
             break
             case 'ramalanjodoh': case 'ramaljodoh': {
@@ -1826,7 +1826,7 @@ break
                 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
                 let anu = await primbon.ramalan_jodoh(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama Anda :* ${anu.message.nama_anda.nama}\n⭔ *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\n⭔ *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\n⭔ *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\n⭔ *Hasil :* ${anu.message.result}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Nama Anda :* ${anu.message.nama_anda.nama}\nâ­” *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\nâ­” *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\nâ­” *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\nâ­” *Hasil :* ${anu.message.result}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'ramalanjodohbali': case 'ramaljodohbali': {
@@ -1834,7 +1834,7 @@ break
                 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
                 let anu = await primbon.ramalan_jodoh_bali(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama Anda :* ${anu.message.nama_anda.nama}\n⭔ *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\n⭔ *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\n⭔ *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\n⭔ *Hasil :* ${anu.message.result}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Nama Anda :* ${anu.message.nama_anda.nama}\nâ­” *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\nâ­” *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\nâ­” *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\nâ­” *Hasil :* ${anu.message.result}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'suamiistri': {
@@ -1842,7 +1842,7 @@ break
                 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
                 let anu = await primbon.suami_istri(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama Suami :* ${anu.message.suami.nama}\n⭔ *Lahir Suami :* ${anu.message.suami.tgl_lahir}\n⭔ *Nama Istri :* ${anu.message.istri.nama}\n⭔ *Lahir Istri :* ${anu.message.istri.tgl_lahir}\n⭔ *Hasil :* ${anu.message.result}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Nama Suami :* ${anu.message.suami.nama}\nâ­” *Lahir Suami :* ${anu.message.suami.tgl_lahir}\nâ­” *Nama Istri :* ${anu.message.istri.nama}\nâ­” *Lahir Istri :* ${anu.message.istri.tgl_lahir}\nâ­” *Hasil :* ${anu.message.result}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'ramalancinta': case 'ramalcinta': {
@@ -1850,14 +1850,14 @@ break
                 let [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = text.split`,`
                 let anu = await primbon.ramalan_cinta(nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama Anda :* ${anu.message.nama_anda.nama}\n⭔ *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\n⭔ *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\n⭔ *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\n⭔ *Sisi Positif :* ${anu.message.sisi_positif}\n⭔ *Sisi Negatif :* ${anu.message.sisi_negatif}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Nama Anda :* ${anu.message.nama_anda.nama}\nâ­” *Lahir Anda :* ${anu.message.nama_anda.tgl_lahir}\nâ­” *Nama Pasangan :* ${anu.message.nama_pasangan.nama}\nâ­” *Lahir Pasangan :* ${anu.message.nama_pasangan.tgl_lahir}\nâ­” *Sisi Positif :* ${anu.message.sisi_positif}\nâ­” *Sisi Negatif :* ${anu.message.sisi_negatif}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'artinama': {
                 if (!text) throw `Example : ${prefix + command} Nanang`
                 let anu = await primbon.arti_nama(text)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama :* ${anu.message.nama}\n⭔ *Arti :* ${anu.message.arti}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Nama :* ${anu.message.nama}\nâ­” *Arti :* ${anu.message.arti}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'kecocokannama': case 'cocoknama': {
@@ -1865,7 +1865,7 @@ break
                 let [nama, tgl, bln, thn] = text.split`,`
                 let anu = await primbon.kecocokan_nama(nama, tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama :* ${anu.message.nama}\n⭔ *Lahir :* ${anu.message.tgl_lahir}\n⭔ *Life Path :* ${anu.message.life_path}\n⭔ *Destiny :* ${anu.message.destiny}\n⭔ *Destiny Desire :* ${anu.message.destiny_desire}\n⭔ *Personality :* ${anu.message.personality}\n⭔ *Persentase :* ${anu.message.persentase_kecocokan}`, m)
+                xavior.sendText(m.chat, `â­” *Nama :* ${anu.message.nama}\nâ­” *Lahir :* ${anu.message.tgl_lahir}\nâ­” *Life Path :* ${anu.message.life_path}\nâ­” *Destiny :* ${anu.message.destiny}\nâ­” *Destiny Desire :* ${anu.message.destiny_desire}\nâ­” *Personality :* ${anu.message.personality}\nâ­” *Persentase :* ${anu.message.persentase_kecocokan}`, m)
             }
             break
             case 'kecocokanpasangan': case 'cocokpasangan': case 'pasangan': {
@@ -1873,7 +1873,7 @@ break
                 let [nama1, nama2] = text.split`|`
                 let anu = await primbon.kecocokan_nama_pasangan(nama1, nama2)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendImage(m.chat,  anu.message.gambar, `⭔ *Nama Anda :* ${anu.message.nama_anda}\n⭔ *Nama Pasangan :* ${anu.message.nama_pasangan}\n⭔ *Sisi Positif :* ${anu.message.sisi_positif}\n⭔ *Sisi Negatif :* ${anu.message.sisi_negatif}`, m)
+                xavior.sendImage(m.chat,  anu.message.gambar, `â­” *Nama Anda :* ${anu.message.nama_anda}\nâ­” *Nama Pasangan :* ${anu.message.nama_pasangan}\nâ­” *Sisi Positif :* ${anu.message.sisi_positif}\nâ­” *Sisi Negatif :* ${anu.message.sisi_negatif}`, m)
             }
             break
             case 'jadianpernikahan': case 'jadiannikah': {
@@ -1881,7 +1881,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.tanggal_jadian_pernikahan(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Tanggal Pernikahan :* ${anu.message.tanggal}\n⭔ *karakteristik :* ${anu.message.karakteristik}`, m)
+                xavior.sendText(m.chat, `â­” *Tanggal Pernikahan :* ${anu.message.tanggal}\nâ­” *karakteristik :* ${anu.message.karakteristik}`, m)
             }
             break
             case 'sifatusaha': {
@@ -1889,7 +1889,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.sifat_usaha_bisnis(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Lahir :* ${anu.message.hari_lahir}\n⭔ *Usaha :* ${anu.message.usaha}`, m)
+                xavior.sendText(m.chat, `â­” *Lahir :* ${anu.message.hari_lahir}\nâ­” *Usaha :* ${anu.message.usaha}`, m)
             }
             break
             case 'rejeki': case 'rezeki': {
@@ -1897,7 +1897,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.rejeki_hoki_weton(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Lahir :* ${anu.message.hari_lahir}\n⭔ *Rezeki :* ${anu.message.rejeki}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Lahir :* ${anu.message.hari_lahir}\nâ­” *Rezeki :* ${anu.message.rejeki}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'pekerjaan': case 'kerja': {
@@ -1905,7 +1905,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.pekerjaan_weton_lahir(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Lahir :* ${anu.message.hari_lahir}\n⭔ *Pekerjaan :* ${anu.message.pekerjaan}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Lahir :* ${anu.message.hari_lahir}\nâ­” *Pekerjaan :* ${anu.message.pekerjaan}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'ramalannasib': case 'ramalnasib': case 'nasib': {
@@ -1913,7 +1913,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.ramalan_nasib(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Analisa :* ${anu.message.analisa}\n⭔ *Angka Akar :* ${anu.message.angka_akar}\n⭔ *Sifat :* ${anu.message.sifat}\n⭔ *Elemen :* ${anu.message.elemen}\n⭔ *Angka Keberuntungan :* ${anu.message.angka_keberuntungan}`, m)
+                xavior.sendText(m.chat, `â­” *Analisa :* ${anu.message.analisa}\nâ­” *Angka Akar :* ${anu.message.angka_akar}\nâ­” *Sifat :* ${anu.message.sifat}\nâ­” *Elemen :* ${anu.message.elemen}\nâ­” *Angka Keberuntungan :* ${anu.message.angka_keberuntungan}`, m)
             }
             break
             case 'potensipenyakit': case 'penyakit': {
@@ -1921,7 +1921,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.cek_potensi_penyakit(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Analisa :* ${anu.message.analisa}\n⭔ *Sektor :* ${anu.message.sektor}\n⭔ *Elemen :* ${anu.message.elemen}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Analisa :* ${anu.message.analisa}\nâ­” *Sektor :* ${anu.message.sektor}\nâ­” *Elemen :* ${anu.message.elemen}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'artitarot': case 'tarot': {
@@ -1929,7 +1929,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.arti_kartu_tarot(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendImage(m.chat, anu.message.image, `⭔ *Lahir :* ${anu.message.tgl_lahir}\n⭔ *Simbol Tarot :* ${anu.message.simbol_tarot}\n⭔ *Arti :* ${anu.message.arti}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendImage(m.chat, anu.message.image, `â­” *Lahir :* ${anu.message.tgl_lahir}\nâ­” *Simbol Tarot :* ${anu.message.simbol_tarot}\nâ­” *Arti :* ${anu.message.arti}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'fengshui': {
@@ -1937,7 +1937,7 @@ break
                 let [nama, gender, tahun] = text.split`,`
                 let anu = await primbon.perhitungan_feng_shui(nama, gender, tahun)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama :* ${anu.message.nama}\n⭔ *Lahir :* ${anu.message.tahun_lahir}\n⭔ *Gender :* ${anu.message.jenis_kelamin}\n⭔ *Angka Kua :* ${anu.message.angka_kua}\n⭔ *Kelompok :* ${anu.message.kelompok}\n⭔ *Karakter :* ${anu.message.karakter}\n⭔ *Sektor Baik :* ${anu.message.sektor_baik}\n⭔ *Sektor Buruk :* ${anu.message.sektor_buruk}`, m)
+                xavior.sendText(m.chat, `â­” *Nama :* ${anu.message.nama}\nâ­” *Lahir :* ${anu.message.tahun_lahir}\nâ­” *Gender :* ${anu.message.jenis_kelamin}\nâ­” *Angka Kua :* ${anu.message.angka_kua}\nâ­” *Kelompok :* ${anu.message.kelompok}\nâ­” *Karakter :* ${anu.message.karakter}\nâ­” *Sektor Baik :* ${anu.message.sektor_baik}\nâ­” *Sektor Buruk :* ${anu.message.sektor_buruk}`, m)
             }
             break
             case 'haribaik': {
@@ -1945,7 +1945,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.petung_hari_baik(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Lahir :* ${anu.message.tgl_lahir}\n⭔ *Kala Tinantang :* ${anu.message.kala_tinantang}\n⭔ *Info :* ${anu.message.info}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Lahir :* ${anu.message.tgl_lahir}\nâ­” *Kala Tinantang :* ${anu.message.kala_tinantang}\nâ­” *Info :* ${anu.message.info}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'harisangar': case 'taliwangke': {
@@ -1953,7 +1953,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.hari_sangar_taliwangke(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Lahir :* ${anu.message.tgl_lahir}\n⭔ *Hasil :* ${anu.message.result}\n⭔ *Info :* ${anu.message.info}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Lahir :* ${anu.message.tgl_lahir}\nâ­” *Hasil :* ${anu.message.result}\nâ­” *Info :* ${anu.message.info}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'harinaas': case 'harisial': {
@@ -1961,7 +1961,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.primbon_hari_naas(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Hari Lahir :* ${anu.message.hari_lahir}\n⭔ *Tanggal Lahir :* ${anu.message.tgl_lahir}\n⭔ *Hari Naas :* ${anu.message.hari_naas}\n⭔ *Info :* ${anu.message.catatan}\n⭔ *Catatan :* ${anu.message.info}`, m)
+                xavior.sendText(m.chat, `â­” *Hari Lahir :* ${anu.message.hari_lahir}\nâ­” *Tanggal Lahir :* ${anu.message.tgl_lahir}\nâ­” *Hari Naas :* ${anu.message.hari_naas}\nâ­” *Info :* ${anu.message.catatan}\nâ­” *Catatan :* ${anu.message.info}`, m)
             }
             break
             case 'nagahari': case 'harinaga': {
@@ -1969,7 +1969,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.rahasia_naga_hari(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Hari Lahir :* ${anu.message.hari_lahir}\n⭔ *Tanggal Lahir :* ${anu.message.tgl_lahir}\n⭔ *Arah Naga Hari :* ${anu.message.arah_naga_hari}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Hari Lahir :* ${anu.message.hari_lahir}\nâ­” *Tanggal Lahir :* ${anu.message.tgl_lahir}\nâ­” *Arah Naga Hari :* ${anu.message.arah_naga_hari}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'arahrejeki': case 'arahrezeki': {
@@ -1977,7 +1977,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.primbon_arah_rejeki(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Hari Lahir :* ${anu.message.hari_lahir}\n⭔ *tanggal Lahir :* ${anu.message.tgl_lahir}\n⭔ *Arah Rezeki :* ${anu.message.arah_rejeki}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Hari Lahir :* ${anu.message.hari_lahir}\nâ­” *tanggal Lahir :* ${anu.message.tgl_lahir}\nâ­” *Arah Rezeki :* ${anu.message.arah_rejeki}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'peruntungan': {
@@ -1985,7 +1985,7 @@ break
                 let [nama, tgl, bln, thn, untuk] = text.split`,`
                 let anu = await primbon.ramalan_peruntungan(nama, tgl, bln, thn, untuk)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama :* ${anu.message.nama}\n⭔ *Lahir :* ${anu.message.tgl_lahir}\n⭔ *Peruntungan Tahun :* ${anu.message.peruntungan_tahun}\n⭔ *Hasil :* ${anu.message.result}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Nama :* ${anu.message.nama}\nâ­” *Lahir :* ${anu.message.tgl_lahir}\nâ­” *Peruntungan Tahun :* ${anu.message.peruntungan_tahun}\nâ­” *Hasil :* ${anu.message.result}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'weton': case 'wetonjawa': {
@@ -1993,7 +1993,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.weton_jawa(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Tanggal :* ${anu.message.tanggal}\n⭔ *Jumlah Neptu :* ${anu.message.jumlah_neptu}\n⭔ *Watak Hari :* ${anu.message.watak_hari}\n⭔ *Naga Hari :* ${anu.message.naga_hari}\n⭔ *Jam Baik :* ${anu.message.jam_baik}\n⭔ *Watak Kelahiran :* ${anu.message.watak_kelahiran}`, m)
+                xavior.sendText(m.chat, `â­” *Tanggal :* ${anu.message.tanggal}\nâ­” *Jumlah Neptu :* ${anu.message.jumlah_neptu}\nâ­” *Watak Hari :* ${anu.message.watak_hari}\nâ­” *Naga Hari :* ${anu.message.naga_hari}\nâ­” *Jam Baik :* ${anu.message.jam_baik}\nâ­” *Watak Kelahiran :* ${anu.message.watak_kelahiran}`, m)
             }
             break
             case 'sifat': case 'karakter': {
@@ -2001,7 +2001,7 @@ break
                 let [nama, tgl, bln, thn] = text.split`,`
                 let anu = await primbon.sifat_karakter_tanggal_lahir(nama, tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama :* ${anu.message.nama}\n⭔ *Lahir :* ${anu.message.tgl_lahir}\n⭔ *Garis Hidup :* ${anu.message.garis_hidup}`, m)
+                xavior.sendText(m.chat, `â­” *Nama :* ${anu.message.nama}\nâ­” *Lahir :* ${anu.message.tgl_lahir}\nâ­” *Garis Hidup :* ${anu.message.garis_hidup}`, m)
             }
             break
             case 'keberuntungan': {
@@ -2009,7 +2009,7 @@ break
                 let [nama, tgl, bln, thn] = text.split`,`
                 let anu = await primbon.potensi_keberuntungan(nama, tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Nama :* ${anu.message.nama}\n⭔ *Lahir :* ${anu.message.tgl_lahir}\n⭔ *Hasil :* ${anu.message.result}`, m)
+                xavior.sendText(m.chat, `â­” *Nama :* ${anu.message.nama}\nâ­” *Lahir :* ${anu.message.tgl_lahir}\nâ­” *Hasil :* ${anu.message.result}`, m)
             }
             break
             case 'memancing': {
@@ -2017,7 +2017,7 @@ break
                 let [tgl, bln, thn] = text.split`,`
                 let anu = await primbon.primbon_memancing_ikan(tgl, bln, thn)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Tanggal :* ${anu.message.tgl_memancing}\n⭔ *Hasil :* ${anu.message.result}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Tanggal :* ${anu.message.tgl_memancing}\nâ­” *Hasil :* ${anu.message.result}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'masasubur': {
@@ -2025,7 +2025,7 @@ break
                 let [tgl, bln, thn, siklus] = text.split`,`
                 let anu = await primbon.masa_subur(tgl, bln, thn, siklus)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Hasil :* ${anu.message.result}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Hasil :* ${anu.message.result}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'zodiak': case 'zodiac': {
@@ -2060,14 +2060,14 @@ break
                 
                 let anu = await primbon.zodiak(zodiac)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Zodiak :* ${anu.message.zodiak}\n⭔ *Nomor :* ${anu.message.nomor_keberuntungan}\n⭔ *Aroma :* ${anu.message.aroma_keberuntungan}\n⭔ *Planet :* ${anu.message.planet_yang_mengitari}\n⭔ *Bunga :* ${anu.message.bunga_keberuntungan}\n⭔ *Warna :* ${anu.message.warna_keberuntungan}\n⭔ *Batu :* ${anu.message.batu_keberuntungan}\n⭔ *Elemen :* ${anu.message.elemen_keberuntungan}\n⭔ *Pasangan Zodiak :* ${anu.message.pasangan_zodiak}\n⭔ *Catatan :* ${anu.message.catatan}`, m)
+                xavior.sendText(m.chat, `â­” *Zodiak :* ${anu.message.zodiak}\nâ­” *Nomor :* ${anu.message.nomor_keberuntungan}\nâ­” *Aroma :* ${anu.message.aroma_keberuntungan}\nâ­” *Planet :* ${anu.message.planet_yang_mengitari}\nâ­” *Bunga :* ${anu.message.bunga_keberuntungan}\nâ­” *Warna :* ${anu.message.warna_keberuntungan}\nâ­” *Batu :* ${anu.message.batu_keberuntungan}\nâ­” *Elemen :* ${anu.message.elemen_keberuntungan}\nâ­” *Pasangan Zodiak :* ${anu.message.pasangan_zodiak}\nâ­” *Catatan :* ${anu.message.catatan}`, m)
             }
             break
             case 'shio': {
                 if (!text) throw `Example : ${prefix + command} tikus\n\nNote : For Detail https://primbon.com/shio.htm`
                 let anu = await primbon.shio(text)
                 if (anu.status == false) return m.reply(anu.message)
-                xavior.sendText(m.chat, `⭔ *Hasil :* ${anu.message}`, m)
+                xavior.sendText(m.chat, `â­” *Hasil :* ${anu.message}`, m)
             }
             break
 	    case 'stalker': case 'stalk': {
@@ -2109,13 +2109,13 @@ break
                     if (!id) throw `No Query username, Example : ${prefix + command} ig cak_haho`
                     let { result: anu } = await fetchJson(api('zenz', '/api/stalker/ig', { username: id }, 'apikey'))
                     if (anu.status == false) return m.reply(anu.result.message)
-                    xavior.sendMedia(m.chat, anu.caption.profile_hd, '', `⭔ Full Name : ${anu.caption.full_name}\n⭔ User Name : ${anu.caption.user_name}\n⭔ ID ${anu.caption.user_id}\n⭔ Followers : ${anu.caption.followers}\n⭔ Following : ${anu.caption.following}\n⭔ Bussines : ${anu.caption.bussines}\n⭔ Profesional : ${anu.caption.profesional}\n⭔ Verified : ${anu.caption.verified}\n⭔ Private : ${anu.caption.private}\n⭔ Bio : ${anu.caption.biography}\n⭔ Bio Url : ${anu.caption.bio_url}`, m)
+                    xavior.sendMedia(m.chat, anu.caption.profile_hd, '', `â­” Full Name : ${anu.caption.full_name}\nâ­” User Name : ${anu.caption.user_name}\nâ­” ID ${anu.caption.user_id}\nâ­” Followers : ${anu.caption.followers}\nâ­” Following : ${anu.caption.following}\nâ­” Bussines : ${anu.caption.bussines}\nâ­” Profesional : ${anu.caption.profesional}\nâ­” Verified : ${anu.caption.verified}\nâ­” Private : ${anu.caption.private}\nâ­” Bio : ${anu.caption.biography}\nâ­” Bio Url : ${anu.caption.bio_url}`, m)
 		    db.data.users[m.sender].limit -= 1
                 } else if (type.toLowerCase() == 'npm') {
                     if (!id) throw `No Query username, Example : ${prefix + command} npm scrape-primbon`
                     let { result: anu } = await fetchJson(api('zenz', '/api/stalker/npm', { query: id }, 'apikey'))
                     if (anu.status == false) return m.reply(anu.result.message)
-                    m.reply(`⭔ Name : ${anu.name}\n⭔ Version : ${Object.keys(anu.versions)}\n⭔ Created : ${tanggal(anu.time.created)}\n⭔ Modified : ${tanggal(anu.time.modified)}\n⭔ Maintainers :\n ${anu.maintainers.map(v => `- ${v.name} : ${v.email}`).join('\n')}\n\n⭔ Description : ${anu.description}\n⭔ Homepage : ${anu.homepage}\n⭔ Keywords : ${anu.keywords}\n⭔ Author : ${anu.author.name}\n⭔ License : ${anu.license}\n⭔ Readme : ${anu.readme}`)
+                    m.reply(`â­” Name : ${anu.name}\nâ­” Version : ${Object.keys(anu.versions)}\nâ­” Created : ${tanggal(anu.time.created)}\nâ­” Modified : ${tanggal(anu.time.modified)}\nâ­” Maintainers :\n ${anu.maintainers.map(v => `- ${v.name} : ${v.email}`).join('\n')}\n\nâ­” Description : ${anu.description}\nâ­” Homepage : ${anu.homepage}\nâ­” Keywords : ${anu.keywords}\nâ­” Author : ${anu.author.name}\nâ­” License : ${anu.license}\nâ­” Readme : ${anu.readme}`)
 		    db.data.users[m.sender].limit -= 1
                 } else {
                     m.reply(`Example : ${prefix +command} type id\n\nList Type :\n1. ff (Free Fire)\n2. ml (Mobile Legends)\n3. aov (Arena Of Valor)\n4. cod (Call Of Duty)\n5. pb (point Blank)\n6. ig (Instagram)\n7. npm (https://npmjs.com)`)
@@ -2127,8 +2127,8 @@ break
                 m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/tiktok', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1},
-                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
+                    {buttonId: `tiktokwm ${text}`, buttonText: {displayText: 'â–º With Watermark'}, type: 1},
+                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: 'â™« Audio'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.nowatermark },
@@ -2145,8 +2145,8 @@ break
                 m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/tiktok', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
-                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
+                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: 'â–º No Watermark'}, type: 1},
+                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: 'â™« Audio'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.watermark },
@@ -2163,8 +2163,8 @@ break
                 m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/musically', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
-                    {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1}
+                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: 'â–º No Watermark'}, type: 1},
+                    {buttonId: `tiktokwm ${text}`, buttonText: {displayText: 'â–º With Watermark'}, type: 1}
                 ]
                 let buttonMessage = {
                     text: `Download From ${text}`,
@@ -2192,7 +2192,7 @@ break
                 if (!text) throw 'No Query Title'
                 m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/joox', { query: text }, 'apikey'))
-                let msg = await xavior.sendImage(m.chat, anu.result.img, `⭔ Title : ${anu.result.lagu}\n⭔ Album : ${anu.result.album}\n⭔ Singer : ${anu.result.penyanyi}\n⭔ Publish : ${anu.result.publish}\n⭔ Lirik :\n${anu.result.lirik.result}`, m)
+                let msg = await xavior.sendImage(m.chat, anu.result.img, `â­” Title : ${anu.result.lagu}\nâ­” Album : ${anu.result.album}\nâ­” Singer : ${anu.result.penyanyi}\nâ­” Publish : ${anu.result.publish}\nâ­” Lirik :\n${anu.result.lirik.result}`, m)
                 xavior.sendMessage(m.chat, { audio: { url: anu.result.mp4aLink }, mimetype: 'audio/mpeg', fileName: anu.result.lagu+'.m4a' }, { quoted: msg })
             }
             break
@@ -2200,7 +2200,7 @@ break
                 if (!text) throw 'No Query Title'
                 m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/soundcloud', { url: isUrl(text)[0] }, 'apikey'))
-                let msg = await xavior.sendImage(m.chat, anu.result.thumb, `⭔ Title : ${anu.result.title}\n⭔ Url : ${isUrl(text)[0]}`)
+                let msg = await xavior.sendImage(m.chat, anu.result.thumb, `â­” Title : ${anu.result.title}\nâ­” Url : ${isUrl(text)[0]}`)
                 xavior.sendMessage(m.chat, { audio: { url: anu.result.url }, mimetype: 'audio/mpeg', fileName: anu.result.title+'.m4a' }, { quoted: msg })
             }
             break
@@ -2209,7 +2209,7 @@ break
                 m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/twitter', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `twittermp3 ${text}`, buttonText: {displayText: '► Audio'}, type: 1}
+                    {buttonId: `twittermp3 ${text}`, buttonText: {displayText: 'â–º Audio'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.HD || anu.result.SD },
@@ -2226,7 +2226,7 @@ break
                 m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/twitter', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `twitter ${text}`, buttonText: {displayText: '► Video'}, type: 1}
+                    {buttonId: `twitter ${text}`, buttonText: {displayText: 'â–º Video'}, type: 1}
                 ]
                 let buttonMessage = {
 		    image: { url: anu.result.thumb },
@@ -2243,7 +2243,7 @@ break
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/facebook', { url: text }, 'apikey'))
-                xavior.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `⭔ Title : ${anu.result.title}`}, { quoted: m })
+                xavior.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `â­” Title : ${anu.result.title}`}, { quoted: m })
             }
             break
 	        case 'pindl': case 'pinterestdl': {
@@ -2259,27 +2259,27 @@ break
 		let anu = await umma(isUrl(text)[0])
 		if (anu.type == 'video') {
 		    let buttons = [
-                        {buttonId: `ytmp3 ${anu.media[0]} 128kbps`, buttonText: {displayText: '♫ Audio'}, type: 1},
-                        {buttonId: `ytmp4 ${anu.media[0]} 360p`, buttonText: {displayText: '► Video'}, type: 1}
+                        {buttonId: `ytmp3 ${anu.media[0]} 128kbps`, buttonText: {displayText: 'â™« Audio'}, type: 1},
+                        {buttonId: `ytmp4 ${anu.media[0]} 360p`, buttonText: {displayText: 'â–º Video'}, type: 1}
                     ]
 		    let buttonMessage = {
 		        image: { url: anu.author.profilePic },
 			caption: `
-⭔ Title : ${anu.title}
-⭔ Author : ${anu.author.name}
-⭔ Like : ${anu.like}
-⭔ Caption : ${anu.caption}
-⭔ Url : ${anu.media[0]}
+â­” Title : ${anu.title}
+â­” Author : ${anu.author.name}
+â­” Like : ${anu.like}
+â­” Caption : ${anu.caption}
+â­” Url : ${anu.media[0]}
 Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan command ytmp3/ytmp4 dengan url diatas
 `,
-			footer: '©XaviorOfc',
+			footer: 'Â©XaviorOfc',
 			buttons,
 			headerType: 4
 		    }
 		    xavior.sendMessage(m.chat, buttonMessage, { quoted: m })
 		} else if (anu.type == 'image') {
 		    anu.media.map(async (url) => {
-		        xavior.sendMessage(m.chat, { image: { url }, caption: `⭔ Title : ${anu.title}\n⭔ Author : ${anu.author.name}\n⭔ Like : ${anu.like}\n⭔ Caption : ${anu.caption}` }, { quoted: m })
+		        xavior.sendMessage(m.chat, { image: { url }, caption: `â­” Title : ${anu.title}\nâ­” Author : ${anu.author.name}\nâ­” Like : ${anu.like}\nâ­” Caption : ${anu.caption}` }, { quoted: m })
 		    })
 		}
 	    }
@@ -2374,7 +2374,7 @@ ${id}`)
 		if (!args[0]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah tafsir surah Al-Fatihah ayat 2`
 		if (!args[1]) throw `Contoh penggunaan:\n${prefix + command} 1 2\n\nmaka hasilnya adalah tafsir surah Al-Fatihah ayat 2`
 		let res = await fetchJson(`https://islamic-api-indonesia.herokuapp.com/api/data/quran?surah=${args[0]}&ayat=${args[1]}`)
-		let txt = `「 *Tafsir Surah*  」
+		let txt = `ã€Œ *Tafsir Surah*  ã€
 
 *Pendek* : ${res.result.data.tafsir.id.short}
 
@@ -2481,9 +2481,9 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
             case 'listmsg': {
                 let msgs = JSON.parse(fs.readFileSync('./src/database.json'))
 	        let seplit = Object.entries(global.db.data.database).map(([nama, isi]) => { return { nama, ...isi } })
-		let teks = '「 LIST DATABASE 」\n\n'
+		let teks = 'ã€Œ LIST DATABASE ã€\n\n'
 		for (let i of seplit) {
-		    teks += `⬡ *Name :* ${i.nama}\n⬡ *Type :* ${getContentType(i.message).replace(/Message/i, '')}\n────────────────────────\n\n`
+		    teks += `â¬¡ *Name :* ${i.nama}\nâ¬¡ *Type :* ${getContentType(i.message).replace(/Message/i, '')}\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n\n`
 	        }
 	        m.reply(teks)
 	    }
@@ -2501,7 +2501,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
 				let buttons = [
                     { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
                 ]
-                xavior.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await xavior.getName(m.sender)} Welcome To Anonymous Chat\n\nKlik Button Dibawah Ini Untuk Mencari Partner\`\`\``, '©XaviorOfc', m)
+                xavior.sendButtonText(m.chat, buttons, `\`\`\`Hi ${await xavior.getName(m.sender)} Welcome To Anonymous Chat\n\nKlik Button Dibawah Ini Untuk Mencari Partner\`\`\``, 'Â©XaviorOfc', m)
             }
 			break
             case 'keluar': case 'leave': {
@@ -2528,7 +2528,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                     let buttons = [
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(m.chat, buttons, `\`\`\`Kamu Masih Berada Di dalam Sesi Anonymous, Tekan Button Dibawah Ini Untuk Menghentikan Sesi Anonymous Anda\`\`\``, '©XaviorOfc', m)
+                    await xavior.sendButtonText(m.chat, buttons, `\`\`\`Kamu Masih Berada Di dalam Sesi Anonymous, Tekan Button Dibawah Ini Untuk Menghentikan Sesi Anonymous Anda\`\`\``, 'Â©XaviorOfc', m)
                     throw false
                 }
                 let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
@@ -2537,10 +2537,10 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                         { buttonId: 'next', buttonText: { displayText: 'Skip' }, type: 1 },
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(room.a, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, '©XaviorOfc', m)
+                    await xavior.sendButtonText(room.a, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, 'Â©XaviorOfc', m)
                     room.b = m.sender
                     room.state = 'CHATTING'
-                    await xavior.sendButtonText(room.b, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, '©XaviorOfc', m)
+                    await xavior.sendButtonText(room.b, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, 'Â©XaviorOfc', m)
                 } else {
                     let id = + new Date
                     this.anonymous[id] = {
@@ -2558,7 +2558,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                     let buttons = [
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(m.chat, buttons, `\`\`\`Mohon Tunggu Sedang Mencari Partner\`\`\``, '©XaviorOfc', m)
+                    await xavior.sendButtonText(m.chat, buttons, `\`\`\`Mohon Tunggu Sedang Mencari Partner\`\`\``, 'Â©XaviorOfc', m)
                 }
                 break
             }
@@ -2582,10 +2582,10 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                         { buttonId: 'next', buttonText: { displayText: 'Skip' }, type: 1 },
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(room.a, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, '©XaviorOfc', m)
+                    await xavior.sendButtonText(room.a, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, 'Â©XaviorOfc', m)
                     room.b = m.sender
                     room.state = 'CHATTING'
-                    await xavior.sendButtonText(room.b, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, '©XaviorOfc', m)
+                    await xavior.sendButtonText(room.b, buttons, `\`\`\`Berhasil Menemukan Partner, sekarang kamu dapat mengirim pesan\`\`\``, 'Â©XaviorOfc', m)
                 } else {
                     let id = + new Date
                     this.anonymous[id] = {
@@ -2603,7 +2603,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                     let buttons = [
                         { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
                     ]
-                    await xavior.sendButtonText(m.chat, buttons, `\`\`\`Mohon Tunggu Sedang Mencari Partner\`\`\``, '©XaviorOfc', m)
+                    await xavior.sendButtonText(m.chat, buttons, `\`\`\`Mohon Tunggu Sedang Mencari Partner\`\`\``, 'Â©XaviorOfc', m)
                 }
                 break
             }
@@ -2652,7 +2652,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                 respon = `
 Kecepatan Respon ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
 
-💻 Info Server
+ðŸ’» Info Server
 RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
 _NodeJS Memory Usaage_
@@ -2690,12 +2690,12 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             case 'playstore': {
             if (!text) throw `Example : ${prefix + command} clash of clans`
             let res = await fetchJson(api('zenz', '/webzone/playstore', { query: text }, 'apikey'))
-            let teks = `⭔ Playstore Search From : ${text}\n\n`
+            let teks = `â­” Playstore Search From : ${text}\n\n`
             for (let i of res.result) {
-            teks += `⭔ Name : ${i.name}\n`
-            teks += `⭔ Link : ${i.link}\n`
-            teks += `⭔ Developer : ${i.developer}\n`
-            teks += `⭔ Link Developer : ${i.link_dev}\n\n──────────────────────\n`
+            teks += `â­” Name : ${i.name}\n`
+            teks += `â­” Link : ${i.link}\n`
+            teks += `â­” Developer : ${i.developer}\n`
+            teks += `â­” Link Developer : ${i.link_dev}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n`
             }
             m.reply(teks)
             }
@@ -2704,20 +2704,20 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             if (!text) throw `Example : ${prefix + command} samsung`
             let res = await fetchJson(api('zenz', '/webzone/gsmarena', { query: text }, 'apikey'))
             let { judul, rilis, thumb, ukuran, type, storage, display, inchi, pixel, videoPixel, ram, chipset, batrai, merek_batre, detail } = res.result
-let capt = `⭔ Title: ${judul}
-⭔ Realease: ${rilis}
-⭔ Size: ${ukuran}
-⭔ Type: ${type}
-⭔ Storage: ${storage}
-⭔ Display: ${display}
-⭔ Inchi: ${inchi}
-⭔ Pixel: ${pixel}
-⭔ Video Pixel: ${videoPixel}
-⭔ Ram: ${ram}
-⭔ Chipset: ${chipset}
-⭔ Battery: ${batrai}
-⭔ Battery Brand: ${merek_batre}
-⭔ Detail: ${detail}`
+let capt = `â­” Title: ${judul}
+â­” Realease: ${rilis}
+â­” Size: ${ukuran}
+â­” Type: ${type}
+â­” Storage: ${storage}
+â­” Display: ${display}
+â­” Inchi: ${inchi}
+â­” Pixel: ${pixel}
+â­” Video Pixel: ${videoPixel}
+â­” Ram: ${ram}
+â­” Chipset: ${chipset}
+â­” Battery: ${batrai}
+â­” Battery Brand: ${merek_batre}
+â­” Detail: ${detail}`
             xavior.sendImage(m.chat, thumb, capt, m)
             }
             break
@@ -2726,9 +2726,9 @@ let capt = `⭔ Title: ${judul}
             let res = await fetchJson(api('zenz', '/webzone/jadwalbioskop', { kota: text }, 'apikey'))
             let capt = `Jadwal Bioskop From : ${text}\n\n`
             for (let i of res.result){
-            capt += `⭔ Title: ${i.title}\n`
-            capt += `⭔ Thumbnail: ${i.thumb}\n`
-            capt += `⭔ Url: ${i.url}\n\n──────────────────────\n`
+            capt += `â­” Title: ${i.title}\n`
+            capt += `â­” Thumbnail: ${i.thumb}\n`
+            capt += `â­” Url: ${i.url}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n`
             }
             xavior.sendImage(m.chat, res.result[0].thumb, capt, m)
             }
@@ -2737,9 +2737,9 @@ let capt = `⭔ Title: ${judul}
             let res = await fetchJson(api('zenz', '/webzone/nowplayingbioskop', {}, 'apikey'))
             let capt = `Now Playing Bioskop\n\n`
             for (let i of res.result){
-            capt += `⭔ Title: ${i.title}\n`
-            capt += `⭔ Url: ${i.url}\n`
-            capt += `⭔ Img Url: ${i.img}\n\n──────────────────────\n`
+            capt += `â­” Title: ${i.title}\n`
+            capt += `â­” Url: ${i.url}\n`
+            capt += `â­” Img Url: ${i.img}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n`
             }
             xavior.sendImage(m.chat, res.result[0].img, capt, m)
             }
@@ -2749,11 +2749,11 @@ let capt = `⭔ Title: ${judul}
             let res = await fetchJson(api('zenz', '/webzone/amino', { query: text }, 'apikey'))
             let capt = `Aminio Search From : ${text}\n\n`
             for (let i of res.result){
-            capt += `⭔ Community: ${i.community}\n`
-            capt += `⭔ Community Link: ${i.community_link}\n`
-            capt += `⭔ Thumbnail: ${i.community_thumb}\n`
-            capt += `⭔ Description: ${i.community_desc}\n`
-            capt += `⭔ Member Count: ${i.member_count}\n\n──────────────────────\n`
+            capt += `â­” Community: ${i.community}\n`
+            capt += `â­” Community Link: ${i.community_link}\n`
+            capt += `â­” Thumbnail: ${i.community_thumb}\n`
+            capt += `â­” Description: ${i.community_desc}\n`
+            capt += `â­” Member Count: ${i.member_count}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n`
             }
             xavior.sendImage(m.chat, 'https://'+res.result[0].community_thumb, capt, m)
             }
@@ -2763,13 +2763,13 @@ let capt = `⭔ Title: ${judul}
             let res = await fetchJson(api('zenz', '/webzone/wattpad', { query: text }, 'apikey'))
             let { judul, dibaca, divote, bab, waktu, url, thumb, description } = res.result[0]
             let capt = `Wattpad From ${text}\n\n`
-            capt += `⭔ Judul: ${judul}\n`
-            capt += `⭔ Dibaca: ${dibaca}\n`
-            capt += `⭔ Divote: ${divote}\n`
-            capt += `⭔ Bab: ${bab}\n`
-            capt += `⭔ Waktu: ${waktu}\n`
-            capt += `⭔ Url: ${url}\n`
-            capt += `⭔ Deskripsi: ${description}`
+            capt += `â­” Judul: ${judul}\n`
+            capt += `â­” Dibaca: ${dibaca}\n`
+            capt += `â­” Divote: ${divote}\n`
+            capt += `â­” Bab: ${bab}\n`
+            capt += `â­” Waktu: ${waktu}\n`
+            capt += `â­” Url: ${url}\n`
+            capt += `â­” Deskripsi: ${description}`
             xavior.sendImage(m.chat, thumb, capt, m)
             }
             break
@@ -2778,11 +2778,11 @@ let capt = `⭔ Title: ${judul}
             let res = await fetchJson(api('zenz', '/webzone/webtoons', { query: text }, 'apikey'))
             let capt = `Webtoons Search From : ${text}\n\n`
             for (let i of res.result) {
-            capt += `⭔ Judul: ${i.judul}\n`
-            capt += `⭔ Like: ${i.like}\n`
-            capt += `⭔ Creator: ${i.creator}\n`
-            capt += `⭔ Genre: ${i.genre}\n`
-            capt += `⭔ Url: ${i.url}\n\n──────────────────────\n`
+            capt += `â­” Judul: ${i.judul}\n`
+            capt += `â­” Like: ${i.like}\n`
+            capt += `â­” Creator: ${i.creator}\n`
+            capt += `â­” Genre: ${i.genre}\n`
+            capt += `â­” Url: ${i.url}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n`
             }
             m.reply(capt)
             }
@@ -2792,11 +2792,11 @@ let capt = `⭔ Title: ${judul}
             let res = await fetchJson(api('zenz', '/webzone/drakor', { query: text }, 'apikey'))
             let capt = `Drakor Search From : ${text}\n\n`
             for (let i of res.result) {
-            capt += `⭔ Judul: ${i.judul}\n`
-            capt += `⭔ Years: ${i.years}\n`
-            capt += `⭔ Genre: ${i.genre}\n`
-            capt += `⭔ Url: ${i.url}\n`
-            capt += `⭔ Thumbnail Url: ${i.thumbnail}\n\n──────────────────────\n`
+            capt += `â­” Judul: ${i.judul}\n`
+            capt += `â­” Years: ${i.years}\n`
+            capt += `â­” Genre: ${i.genre}\n`
+            capt += `â­” Url: ${i.url}\n`
+            capt += `â­” Thumbnail Url: ${i.thumbnail}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n`
             }
             xavior.sendImage(m.chat, res.result[0].thumbnail, capt, m)
             }
@@ -2852,7 +2852,7 @@ let capt = `⭔ Title: ${judul}
                 ]
                 },
                 ]
-                xavior.sendListMsg(m.chat, `Please select the menu you want to change!`, '©XaviorOfc', `Hello Owner !`, `Click Here`, sections, m)
+                xavior.sendListMsg(m.chat, `Please select the menu you want to change!`, 'Â©XaviorOfc', `Hello Owner !`, `Click Here`, sections, m)
                 }
             }
             break
@@ -2882,54 +2882,54 @@ case 'sewacheck': case 'ceksewa':
 if (!m.isGroup) return m.reply('Fitur Ini Hanya Bisa Digunakan Di Grup')
 if (!isSewa) return m.reply(`Group ini tidak terdaftar dalam list sewabot. Ketik ${prefix}sewabot untuk info lebih lanjut`)
 let cekvipsewa = ms(_sewa.getSewaExpired(from, sewa) - Date.now())
-let sewanya = `*「 SEWA EXPIRE 」*\n\n➸ *ID*: ${from}\n➸ *Expired :* ${cekvipsewa.days} day(s) ${cekvipsewa.hours} hour(s) ${cekvipsewa.minutes} minute(s)`
+let sewanya = `*ã€Œ SEWA EXPIRE ã€*\n\nâž¸ *ID*: ${from}\nâž¸ *Expired :* ${cekvipsewa.days} day(s) ${cekvipsewa.hours} hour(s) ${cekvipsewa.minutes} minute(s)`
 m.reply(sewanya)
 break
 case 'sewabot':
-anu = `╭──「 *SEWABOT* 」
-├  1 BULAN : IDR 100 miliyar (100miliyar)
-╰────
-╭─ [ KELEBIHAN BOT ]
-├  ＯＮ 24 ＪＡＭ
-├  FITUR BANYAK
-├  FAST RESPOND
-╰────
-╭─[ KEUNTUNGAN ]
-├  ANTI LINK ( AUTO KICK )
-├  WELCOME ( OTOMATIS )
-├  DAN RATUSAN FITUR LAINYA
-╰────
-╭─[ *MINAT CHAT SATRYA* ]
-├  🪀 wa.me/6285935201604?text=SEWABOT DONG BANH AKU BENERAN BAYAR 100M KOK PAKE UANG MAMA PLISSS
-╰────
-╭─[ *PAYMENT DONASI* ]
-├  Open Bo
-├  DANA
-├  PULSA
-╰────
+anu = `â•­â”€â”€ã€Œ *SEWABOT* ã€
+â”œ  1 BULAN : IDR 100 miliyar (100miliyar)
+â•°â”€â”€â”€â”€
+â•­â”€ [ KELEBIHAN BOT ]
+â”œ  ï¼¯ï¼® 24 ï¼ªï¼¡ï¼­
+â”œ  FITUR BANYAK
+â”œ  FAST RESPOND
+â•°â”€â”€â”€â”€
+â•­â”€[ KEUNTUNGAN ]
+â”œ  ANTI LINK ( AUTO KICK )
+â”œ  WELCOME ( OTOMATIS )
+â”œ  DAN RATUSAN FITUR LAINYA
+â•°â”€â”€â”€â”€
+â•­â”€[ *MINAT CHAT SATRYA* ]
+â”œ  ðŸª€ wa.me/6285935201604?text=SEWABOT DONG BANH AKU BENERAN BAYAR 100M KOK PAKE UANG MAMA PLISSS
+â•°â”€â”€â”€â”€
+â•­â”€[ *PAYMENT DONASI* ]
+â”œ  Open Bo
+â”œ  DANA
+â”œ  PULSA
+â•°â”€â”€â”€â”€
 
 
-╭──「 *_JADI BOT + OWNER_* 」
-├   RP : IDR 20JT (20JT)
-╰────
-╭─ [ FASILITAS ]
-├  CUMA SCAN QR DOANG JADI BOT + OWNER                
-├  RUN DI HEROKU BUKAN TERMUX + FAST RESPOND
-├  FITUR BOT NYA BANYAK
-├  BUKAN BOT WIBUSOFT
-╰────
-╭─[ KEUNTUNGAN ]
-├  BISA OPEN SEWA BOT
-├  NAMA BOT, NAMA OWNER, OWNER, DLL DI GANTI JADI TERSERAH LU
-╰────
-╭─[ *MINAT CHAT SATRYA* ]
-├  🪀 wa.me/6285935201604?text=JADIBOT DONG BANH AKU BENERAN BAYAR 20JT KOK PAKE UANG PAPA KU PLISSS
-╰────
-╭─[ *PAYMENT DONASI* ]
-├  SHOPPEPAY
-├  SHOPPEPAY2
-├  PULSA
-╰────
+â•­â”€â”€ã€Œ *_JADI BOT + OWNER_* ã€
+â”œ Â  RP : IDR 20JT (20JT)
+â•°â”€â”€â”€â”€
+â•­â”€ [ FASILITAS ]
+â”œ  CUMA SCAN QR DOANG JADI BOT + OWNERÂ Â Â Â Â Â Â Â Â Â Â Â Â Â Â  
+â”œ  RUN DI HEROKU BUKAN TERMUX + FAST RESPOND
+â”œ  FITUR BOT NYA BANYAK
+â”œ  BUKAN BOT WIBUSOFT
+â•°â”€â”€â”€â”€
+â•­â”€[ KEUNTUNGAN ]
+â”œ  BISA OPEN SEWA BOT
+â”œ  NAMA BOT, NAMA OWNER, OWNER,Â DLL DI GANTI JADI TERSERAH LU
+â•°â”€â”€â”€â”€
+â•­â”€[ *MINAT CHAT SATRYA* ]
+â”œ  ðŸª€ wa.me/6285935201604?text=JADIBOT DONG BANH AKU BENERAN BAYAR 20JT KOK PAKE UANG PAPA KU PLISSS
+â•°â”€â”€â”€â”€
+â•­â”€[ *PAYMENT DONASI* ]
+â”œ  SHOPPEPAY
+â”œ  SHOPPEPAY2
+â”œ  PULSA
+â•°â”€â”€â”€â”€
 
 PERHATIAN:
 -KALAU BOT YANG INI FIKTUR NYA SUDAH LENGKAP
@@ -2944,12 +2944,12 @@ RESPON BOTNYA LEBIH CEPAT
 KARNA RUN NYA BEDA SOFTWARE.`
 let btn = [{
                                 quickReplyButton: {
-                                    displayText: '7.11',
+                                    displayText: 'Fianz Botz',
                                     id: 'owner'
                                 }
                                 }, {
                                 quickReplyButton: {
-                                    displayText: 'BOT 7.11',
+                                    displayText: 'BOT yudi',
                                     id: 'owner'
                                 }
                             }, {
@@ -2960,15 +2960,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
             break
 case 'shoppepay': {
@@ -2988,16 +2988,16 @@ case 'command':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
                     title: `Ternyata ${pushname} Ini Sangat Kocak Gaming\n\nJika ${pushname} Lagi Gabut Klik Aja Kotak Ini\n`,
-                    description: "*Aman Kok deck🗿👇*",
+                    description: "*Aman Kok deckðŸ—¿ðŸ‘‡*",
                     buttonText: "All Menu",
-                    footerText: "BOT 7.11 BANH",
+                    footerText: "BOT YUDI NIH BANH",
                     listType: "SINGLE_SELECT",
                     sections: [{
-								"title": "All Menu 7.11",
+								"title": "All Menu Bot",
 								"rows": [
 									{
 										"title": "All Menu Bot",
-										"description": "Selamat Memakai BANG 🗿",
+										"description": "Selamat Memakai BANG ðŸ—¿",
 										"rowId": `${prefix}allmenu`
 									}
 								]
@@ -3007,7 +3007,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 								"rows": [
 									{
 										"title": "Programer Menu",
-										"description": "Mau Dibuatin Bot? Chat WA😉",
+										"description": "Mau Dibuatin Bot? Chat WAðŸ˜‰",
 										"rowId": `${prefix}ownermenu`
 									},
 									{
@@ -3027,7 +3027,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 									},
 									{
 										"title": "Search Menu",
-										"description": "Lu Bisa Cari Edukasi Disini 🗿",
+										"description": "Lu Bisa Cari Edukasi Disini ðŸ—¿",
 										"rowId": `${prefix}searchmenu`
 									},
 									{
@@ -3052,7 +3052,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 									},
 									{
 										"title": "Fun Menu",
-										"description": "Have Fun Doang 😛",
+										"description": "Have Fun Doang ðŸ˜›",
 										"rowId": `${prefix}funmenu`
 									},
 									{
@@ -3077,7 +3077,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 									},
 									{
 										"title": "Heker Menu",
-										"description": "Jancuk Pistel, Pistel Temayo🗿",
+										"description": "Jancuk Pistel, Pistel TemayoðŸ—¿",
 										"rowId": `${prefix}anonymousmenu`
 									},
 									{
@@ -3087,13 +3087,13 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 									},
 									{
 										"title": "Voice Changer",
-										"description": "Menampilkan Menu VC 🗿",
+										"description": "Menampilkan Menu VC ðŸ—¿",
 										"rowId": `${prefix}voicechangermenu`
 									}
 										]
 										},
 							{
-								"title": "Pembuat Bot👤",
+								"title": "Pembuat BotðŸ‘¤",
 								"rows": [
 									{
 										"title": "Pembuat Bot",
@@ -3113,7 +3113,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 								]
 							},
 							{
-								"title": "Thanks To👑",
+								"title": "Thanks ToðŸ‘‘",
 								"rows": [
 									{
 										"title": "Contributor",
@@ -3132,295 +3132,295 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 
 case 'allmenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 OWNER MENU 』*
-│➪ ${prefix}sewa
-│➪ ${prefix}react [emoji]
-│➪ ${prefix}chat [option]
-│➪ ${prefix}join [link]
-│➪ ${prefix}leave
-│➪ ${prefix}block @user
-│➪ ${prefix}unblock @user
-│➪ ${prefix}bcgroup [text]
-│➪ ${prefix}bcall [text]
-│➪ ${prefix}setppbot [image]
-│➪ ${prefix}setexif
-│➪ ${prefix}setmenu [option]
-╰───────────────❏
-╭─❏ *『 GROUP MENU 』*
-│➪ ${prefix}linkgroup
-│➪ ${prefix}ephemeral [option]
-│➪ ${prefix}setppgc [image]
-│➪ ${prefix}setname [text]
-│➪ ${prefix}setdesc [text]
-│➪ ${prefix}group [option]
-│➪ ${prefix}editinfo [option]
-│➪ ${prefix}add @user
-│➪ ${prefix}kick @user
-│➪ ${prefix}hidetag [text]
-│➪ ${prefix}tagall [text]
-│➪ ${prefix}totag [reply]
-│➪ ${prefix}antilink [on/off]
-│➪ ${prefix}mute [on/off]
-│➪ ${prefix}promote @user
-│➪ ${prefix}demote @user
-│➪ ${prefix}vote [text]
-│➪ ${prefix}devote
-│➪ ${prefix}upvote
-│➪ ${prefix}cekvote
-│➪ ${prefix}hapusvote
-╰───────────────❏
-╭─❏ *『 WEBZONE MENU 』*
-│➪ ${prefix}playstore
-│➪ ${prefix}gsmarena
-│➪ ${prefix}jadwalbioskop
-│➪ ${prefix}nowplayingbioskop
-│➪ ${prefix}aminio
-│➪ ${prefix}wattpad
-│➪ ${prefix}webtoons
-│➪ ${prefix}drakor
-╰───────────────❏
-╭─❏ *『 DOWNLOADER MENU 』*
-│➪ ${prefix}tiktoknowm [url]
-│➪ ${prefix}tiktokwm [url]
-│➪ ${prefix}tiktokmp3 [url]
-│➪ ${prefix}instagram [url]
-│➪ ${prefix}twitter [url]
-│➪ ${prefix}twittermp3 [url]
-│➪ ${prefix}facebook [url]
-│➪ ${prefix}pinterestdl [url]
-│➪ ${prefix}ytmp3 [url]
-│➪ ${prefix}ytmp4 [url]
-│➪ ${prefix}getmusic [query]
-│➪ ${prefix}getvideo [query]
-│➪ ${prefix}umma [url]
-│➪ ${prefix}joox [query]
-│➪ ${prefix}soundcloud [url]
-╰───────────────❏
-╭─❏ *『 SEARCH MENU 』*
-│➪ ${prefix}play [query]
-│➪ ${prefix}yts [query]
-│➪ ${prefix}google [query]
-│➪ ${prefix}gimage [query]
-│➪ ${prefix}pinterest [query]
-│➪ ${prefix}wallpaper [query]
-│➪ ${prefix}wikimedia [query]
-│➪ ${prefix}ytsearch [query]
-│➪ ${prefix}ringtone [query]
-│➪ ${prefix}stalk [option] [query]
-╰───────────────❏
-╭─❏ *『 RANDOM MENU 』*
-│➪ ${prefix}coffe
-│➪ ${prefix}quotesanime
-│➪ ${prefix}motivasi
-│➪ ${prefix}dilanquote
-│➪ ${prefix}bucinquote
-│➪ ${prefix}katasenja
-│➪ ${prefix}puisi
-│➪ ${prefix}couple
-│➪ ${prefix}anime
-│➪ ${prefix}waifu
-│➪ ${prefix}husbu
-│➪ ${prefix}neko
-│➪ ${prefix}shinobu
-╰───────────────❏
-╭─❏ *『 TEXT PRO MENU 』*
-│➪ ${prefix}3dchristmas
-│➪ ${prefix}3ddeepsea
-│➪ ${prefix}americanflag
-│➪ ${prefix}3dscifi
-│➪ ${prefix}3drainbow
-│➪ ${prefix}3dwaterpipe
-│➪ ${prefix}halloweenskeleton
-│➪ ${prefix}sketch
-│➪ ${prefix}bluecircuit
-│➪ ${prefix}space
-│➪ ${prefix}metallic
-│➪ ${prefix}fiction
-│➪ ${prefix}greenhorror
-│➪ ${prefix}transformer
-│➪ ${prefix}berry
-│➪ ${prefix}thunder
-│➪ ${prefix}magma
-│➪ ${prefix}3dcrackedstone
-│➪ ${prefix}3dneonlight
-│➪ ${prefix}impressiveglitch
-│➪ ${prefix}naturalleaves
-│➪ ${prefix}fireworksparkle
-│➪ ${prefix}matrix
-│➪ ${prefix}dropwater
-│➪ ${prefix}harrypotter
-│➪ ${prefix}foggywindow
-│➪ ${prefix}neondevils
-│➪ ${prefix}christmasholiday
-│➪ ${prefix}3dgradient
-│➪ ${prefix}blackpink
-│➪ ${prefix}gluetext
-╰───────────────❏
-╭─❏ *『 PHOTO OXY MENU 』*
-│➪ ${prefix}shadow
-│➪ ${prefix}romantic
-│➪ ${prefix}smoke
-│➪ ${prefix}burnpapper
-│➪ ${prefix}naruto
-│➪ ${prefix}lovemsg
-│➪ ${prefix}grassmsg
-│➪ ${prefix}lovetext
-│➪ ${prefix}coffecup
-│➪ ${prefix}butterfly
-│➪ ${prefix}harrypotter
-│➪ ${prefix}retrolol
-╰───────────────❏
-╭─❏ *『 EPHOTO MENU 』*
-│➪ ${prefix}ffcover
-│➪ ${prefix}crossfire
-│➪ ${prefix}galaxy
-│➪ ${prefix}glass
-│➪ ${prefix}neon
-│➪ ${prefix}beach
-│➪ ${prefix}blackpink
-│➪ ${prefix}igcertificate
-│➪ ${prefix}ytcertificate
-╰───────────────❏
-╭─❏ *『 FUN MENU 』*
-│➪ ${prefix}simih
-│➪ ${prefix}halah
-│➪ ${prefix}hilih
-│➪ ${prefix}huluh
-│➪ ${prefix}heleh
-│➪ ${prefix}holoh
-│➪ ${prefix}jadian
-│➪ ${prefix}jodohku
-│➪ ${prefix}delttt
-│➪ ${prefix}tictactoe
-│➪ ${prefix}family100
-│➪ ${prefix}tebak [option]
-│➪ ${prefix}math [mode]
-│➪ ${prefix}suitpvp [@tag]
-╰───────────────❏
-╭─❏ *『 PRIMBON MENU 』*
-│➪ ${prefix}nomorhoki
-│➪ ${prefix}artimimpi
-│➪ ${prefix}artinama
-│➪ ${prefix}ramaljodoh
-│➪ ${prefix}ramaljodohbali
-│➪ ${prefix}suamiistri
-│➪ ${prefix}ramalcinta
-│➪ ${prefix}cocoknama
-│➪ ${prefix}pasangan
-│➪ ${prefix}jadiannikah
-│➪ ${prefix}sifatusaha
-│➪ ${prefix}rezeki
-│➪ ${prefix}pekerjaan
-│➪ ${prefix}nasib
-│➪ ${prefix}penyakit
-│➪ ${prefix}tarot
-│➪ ${prefix}fengshui
-│➪ ${prefix}haribaik
-│➪ ${prefix}harisangar
-│➪ ${prefix}harisial
-│➪ ${prefix}nagahari
-│➪ ${prefix}arahrezeki
-│➪ ${prefix}peruntungan
-│➪ ${prefix}weton
-│➪ ${prefix}karakter
-│➪ ${prefix}keberuntungan
-│➪ ${prefix}memancing
-│➪ ${prefix}masasubur
-│➪ ${prefix}zodiak
-│➪ ${prefix}shio
-╰───────────────❏
-╭─❏ *『 CONVERT MENU 』*
-│➪ ${prefix}attp
-│➪ ${prefix}ttp
-│➪ ${prefix}toimage
-│➪ ${prefix}removebg
-│➪ ${prefix}sticker
-│➪ ${prefix}stickerwm
-│➪ ${prefix}emojimix
-│➪ ${prefix}emojimix2
-│➪ ${prefix}tovideo
-│➪ ${prefix}togif
-│➪ ${prefix}tourl
-│➪ ${prefix}tovn
-│➪ ${prefix}tomp3
-│➪ ${prefix}toaudio
-│➪ ${prefix}ebinary
-│➪ ${prefix}dbinary
-│➪ ${prefix}styletext
-│➪ ${prefix}smeme
-╰───────────────❏
-╭─❏ *『 MAIN MENU 』*
-│➪ ${prefix}ping
-│➪ ${prefix}owner
-│➪ ${prefix}menu / ${prefix}help / ${prefix}?
-│➪ ${prefix}delete
-│➪ ${prefix}infochat
-│➪ ${prefix}quoted
-│➪ ${prefix}listpc
-│➪ ${prefix}listgc
-│➪ ${prefix}listonline
-│➪ ${prefix}speedtest
-╰───────────────❏
-╭─❏ *『 DATABASE MENU 』*
-│➪ ${prefix}setcmd
-│➪ ${prefix}listcmd
-│➪ ${prefix}delcmd
-│➪ ${prefix}lockcmd
-│➪ ${prefix}addmsg
-│➪ ${prefix}listmsg
-│➪ ${prefix}getmsg
-│➪ ${prefix}delmsg
-╰───────────────❏
-╭─❏ *『 ANONYMOUS MENU 』*
-│➪ ${prefix}anonymous
-│➪ ${prefix}start
-│➪ ${prefix}next
-│➪ ${prefix}keluar
-╰───────────────❏
-╭─❏ *『 ISLAMIC MENU 』*
-│➪ ${prefix}iqra
-│➪ ${prefix}hadist
-│➪ ${prefix}alquran
-│➪ ${prefix}juzamma
-│➪ ${prefix}tafsirsurah
-╰───────────────❏
-╭─❏ *『 VOICE CHANGER MENU 』*
-│➪ ${prefix}bass
-│➪ ${prefix}blown
-│➪ ${prefix}deep
-│➪ ${prefix}earrape
-│➪ ${prefix}fast
-│➪ ${prefix}fat
-│➪ ${prefix}nightcore
-│➪ ${prefix}reverse
-│➪ ${prefix}robot
-│➪ ${prefix}slow
-│➪ ${prefix}tupai
-╰───────────────❏`
+â•­â”€â *ã€Ž OWNER MENU ã€*
+â”‚âžª ${prefix}sewa
+â”‚âžª ${prefix}react [emoji]
+â”‚âžª ${prefix}chat [option]
+â”‚âžª ${prefix}join [link]
+â”‚âžª ${prefix}leave
+â”‚âžª ${prefix}block @user
+â”‚âžª ${prefix}unblock @user
+â”‚âžª ${prefix}bcgroup [text]
+â”‚âžª ${prefix}bcall [text]
+â”‚âžª ${prefix}setppbot [image]
+â”‚âžª ${prefix}setexif
+â”‚âžª ${prefix}setmenu [option]
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž GROUP MENU ã€*
+â”‚âžª ${prefix}linkgroup
+â”‚âžª ${prefix}ephemeral [option]
+â”‚âžª ${prefix}setppgc [image]
+â”‚âžª ${prefix}setname [text]
+â”‚âžª ${prefix}setdesc [text]
+â”‚âžª ${prefix}group [option]
+â”‚âžª ${prefix}editinfo [option]
+â”‚âžª ${prefix}add @user
+â”‚âžª ${prefix}kick @user
+â”‚âžª ${prefix}hidetag [text]
+â”‚âžª ${prefix}tagall [text]
+â”‚âžª ${prefix}totag [reply]
+â”‚âžª ${prefix}antilink [on/off]
+â”‚âžª ${prefix}mute [on/off]
+â”‚âžª ${prefix}promote @user
+â”‚âžª ${prefix}demote @user
+â”‚âžª ${prefix}vote [text]
+â”‚âžª ${prefix}devote
+â”‚âžª ${prefix}upvote
+â”‚âžª ${prefix}cekvote
+â”‚âžª ${prefix}hapusvote
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž WEBZONE MENU ã€*
+â”‚âžª ${prefix}playstore
+â”‚âžª ${prefix}gsmarena
+â”‚âžª ${prefix}jadwalbioskop
+â”‚âžª ${prefix}nowplayingbioskop
+â”‚âžª ${prefix}aminio
+â”‚âžª ${prefix}wattpad
+â”‚âžª ${prefix}webtoons
+â”‚âžª ${prefix}drakor
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž DOWNLOADER MENU ã€*
+â”‚âžª ${prefix}tiktoknowm [url]
+â”‚âžª ${prefix}tiktokwm [url]
+â”‚âžª ${prefix}tiktokmp3 [url]
+â”‚âžª ${prefix}instagram [url]
+â”‚âžª ${prefix}twitter [url]
+â”‚âžª ${prefix}twittermp3 [url]
+â”‚âžª ${prefix}facebook [url]
+â”‚âžª ${prefix}pinterestdl [url]
+â”‚âžª ${prefix}ytmp3 [url]
+â”‚âžª ${prefix}ytmp4 [url]
+â”‚âžª ${prefix}getmusic [query]
+â”‚âžª ${prefix}getvideo [query]
+â”‚âžª ${prefix}umma [url]
+â”‚âžª ${prefix}joox [query]
+â”‚âžª ${prefix}soundcloud [url]
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž SEARCH MENU ã€*
+â”‚âžª ${prefix}play [query]
+â”‚âžª ${prefix}yts [query]
+â”‚âžª ${prefix}google [query]
+â”‚âžª ${prefix}gimage [query]
+â”‚âžª ${prefix}pinterest [query]
+â”‚âžª ${prefix}wallpaper [query]
+â”‚âžª ${prefix}wikimedia [query]
+â”‚âžª ${prefix}ytsearch [query]
+â”‚âžª ${prefix}ringtone [query]
+â”‚âžª ${prefix}stalk [option] [query]
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž RANDOM MENU ã€*
+â”‚âžª ${prefix}coffe
+â”‚âžª ${prefix}quotesanime
+â”‚âžª ${prefix}motivasi
+â”‚âžª ${prefix}dilanquote
+â”‚âžª ${prefix}bucinquote
+â”‚âžª ${prefix}katasenja
+â”‚âžª ${prefix}puisi
+â”‚âžª ${prefix}couple
+â”‚âžª ${prefix}anime
+â”‚âžª ${prefix}waifu
+â”‚âžª ${prefix}husbu
+â”‚âžª ${prefix}neko
+â”‚âžª ${prefix}shinobu
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž TEXT PRO MENU ã€*
+â”‚âžª ${prefix}3dchristmas
+â”‚âžª ${prefix}3ddeepsea
+â”‚âžª ${prefix}americanflag
+â”‚âžª ${prefix}3dscifi
+â”‚âžª ${prefix}3drainbow
+â”‚âžª ${prefix}3dwaterpipe
+â”‚âžª ${prefix}halloweenskeleton
+â”‚âžª ${prefix}sketch
+â”‚âžª ${prefix}bluecircuit
+â”‚âžª ${prefix}space
+â”‚âžª ${prefix}metallic
+â”‚âžª ${prefix}fiction
+â”‚âžª ${prefix}greenhorror
+â”‚âžª ${prefix}transformer
+â”‚âžª ${prefix}berry
+â”‚âžª ${prefix}thunder
+â”‚âžª ${prefix}magma
+â”‚âžª ${prefix}3dcrackedstone
+â”‚âžª ${prefix}3dneonlight
+â”‚âžª ${prefix}impressiveglitch
+â”‚âžª ${prefix}naturalleaves
+â”‚âžª ${prefix}fireworksparkle
+â”‚âžª ${prefix}matrix
+â”‚âžª ${prefix}dropwater
+â”‚âžª ${prefix}harrypotter
+â”‚âžª ${prefix}foggywindow
+â”‚âžª ${prefix}neondevils
+â”‚âžª ${prefix}christmasholiday
+â”‚âžª ${prefix}3dgradient
+â”‚âžª ${prefix}blackpink
+â”‚âžª ${prefix}gluetext
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž PHOTO OXY MENU ã€*
+â”‚âžª ${prefix}shadow
+â”‚âžª ${prefix}romantic
+â”‚âžª ${prefix}smoke
+â”‚âžª ${prefix}burnpapper
+â”‚âžª ${prefix}naruto
+â”‚âžª ${prefix}lovemsg
+â”‚âžª ${prefix}grassmsg
+â”‚âžª ${prefix}lovetext
+â”‚âžª ${prefix}coffecup
+â”‚âžª ${prefix}butterfly
+â”‚âžª ${prefix}harrypotter
+â”‚âžª ${prefix}retrolol
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž EPHOTO MENU ã€*
+â”‚âžª ${prefix}ffcover
+â”‚âžª ${prefix}crossfire
+â”‚âžª ${prefix}galaxy
+â”‚âžª ${prefix}glass
+â”‚âžª ${prefix}neon
+â”‚âžª ${prefix}beach
+â”‚âžª ${prefix}blackpink
+â”‚âžª ${prefix}igcertificate
+â”‚âžª ${prefix}ytcertificate
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž FUN MENU ã€*
+â”‚âžª ${prefix}simih
+â”‚âžª ${prefix}halah
+â”‚âžª ${prefix}hilih
+â”‚âžª ${prefix}huluh
+â”‚âžª ${prefix}heleh
+â”‚âžª ${prefix}holoh
+â”‚âžª ${prefix}jadian [NOTE SATRYA JADIAN AMA DEVINA]
+â”‚âžª ${prefix}jodohku
+â”‚âžª ${prefix}delttt
+â”‚âžª ${prefix}tictactoe
+â”‚âžª ${prefix}family100
+â”‚âžª ${prefix}tebak [option]
+â”‚âžª ${prefix}math [mode]
+â”‚âžª ${prefix}suitpvp [@tag]
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž PRIMBON MENU ã€*
+â”‚âžª ${prefix}nomorhoki
+â”‚âžª ${prefix}artimimpi
+â”‚âžª ${prefix}artinama
+â”‚âžª ${prefix}ramaljodoh
+â”‚âžª ${prefix}ramaljodohbali
+â”‚âžª ${prefix}suamiistri
+â”‚âžª ${prefix}ramalcinta
+â”‚âžª ${prefix}cocoknama
+â”‚âžª ${prefix}pasangan
+â”‚âžª ${prefix}jadiannikah
+â”‚âžª ${prefix}sifatusaha
+â”‚âžª ${prefix}rezeki
+â”‚âžª ${prefix}pekerjaan
+â”‚âžª ${prefix}nasib
+â”‚âžª ${prefix}penyakit
+â”‚âžª ${prefix}tarot
+â”‚âžª ${prefix}fengshui
+â”‚âžª ${prefix}haribaik
+â”‚âžª ${prefix}harisangar
+â”‚âžª ${prefix}harisial
+â”‚âžª ${prefix}nagahari
+â”‚âžª ${prefix}arahrezeki
+â”‚âžª ${prefix}peruntungan
+â”‚âžª ${prefix}weton
+â”‚âžª ${prefix}karakter
+â”‚âžª ${prefix}keberuntungan
+â”‚âžª ${prefix}memancing
+â”‚âžª ${prefix}masasubur
+â”‚âžª ${prefix}zodiak
+â”‚âžª ${prefix}shio
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž CONVERT MENU ã€*
+â”‚âžª ${prefix}attp
+â”‚âžª ${prefix}ttp
+â”‚âžª ${prefix}toimage
+â”‚âžª ${prefix}removebg
+â”‚âžª ${prefix}sticker
+â”‚âžª ${prefix}stickerwm
+â”‚âžª ${prefix}emojimix
+â”‚âžª ${prefix}emojimix2
+â”‚âžª ${prefix}tovideo
+â”‚âžª ${prefix}togif
+â”‚âžª ${prefix}tourl
+â”‚âžª ${prefix}tovn
+â”‚âžª ${prefix}tomp3
+â”‚âžª ${prefix}toaudio
+â”‚âžª ${prefix}ebinary
+â”‚âžª ${prefix}dbinary
+â”‚âžª ${prefix}styletext
+â”‚âžª ${prefix}smeme
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž MAIN MENU ã€*
+â”‚âžª ${prefix}ping
+â”‚âžª ${prefix}owner
+â”‚âžª ${prefix}menu / ${prefix}help / ${prefix}?
+â”‚âžª ${prefix}delete
+â”‚âžª ${prefix}infochat
+â”‚âžª ${prefix}quoted
+â”‚âžª ${prefix}listpc
+â”‚âžª ${prefix}listgc
+â”‚âžª ${prefix}listonline
+â”‚âžª ${prefix}speedtest
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž DATABASE MENU ã€*
+â”‚âžª ${prefix}setcmd
+â”‚âžª ${prefix}listcmd
+â”‚âžª ${prefix}delcmd
+â”‚âžª ${prefix}lockcmd
+â”‚âžª ${prefix}addmsg
+â”‚âžª ${prefix}listmsg
+â”‚âžª ${prefix}getmsg
+â”‚âžª ${prefix}delmsg
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž ANONYMOUS MENU ã€*
+â”‚âžª ${prefix}anonymous
+â”‚âžª ${prefix}start
+â”‚âžª ${prefix}next
+â”‚âžª ${prefix}keluar
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž ISLAMIC MENU ã€*
+â”‚âžª ${prefix}iqra
+â”‚âžª ${prefix}hadist
+â”‚âžª ${prefix}alquran
+â”‚âžª ${prefix}juzamma
+â”‚âžª ${prefix}tafsirsurah
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž VOICE CHANGER MENU ã€*
+â”‚âžª ${prefix}bass
+â”‚âžª ${prefix}blown
+â”‚âžª ${prefix}deep
+â”‚âžª ${prefix}earrape
+â”‚âžª ${prefix}fast
+â”‚âžª ${prefix}fat
+â”‚âžª ${prefix}nightcore
+â”‚âžª ${prefix}reverse
+â”‚âžª ${prefix}robot
+â”‚âžª ${prefix}slow
+â”‚âžª ${prefix}tupai
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -3430,12 +3430,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -3446,59 +3446,59 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'ownermenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-│ ➪ Deskripsi : Bot Ini Untuk Anggota 7.11
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm:ss')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm:ss')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm:ss')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â”‚ âžª Deskripsi : Bot Ini Untuk Teman teman @yudi
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm:ss')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm:ss')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm:ss')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 OWNER MENU 』*
-│➪ ${prefix}sewa
-│➪ ${prefix}react [emoji]
-│➪ ${prefix}chat [option]
-│➪ ${prefix}join [link]
-│➪ ${prefix}leave
-│➪ ${prefix}block @user
-│➪ ${prefix}unblock @user
-│➪ ${prefix}bcgroup [text]
-│➪ ${prefix}bcall [text]
-│➪ ${prefix}setppbot [image]
-│➪ ${prefix}setexif
-│➪ ${prefix}setmenu [option]
-╰───────────────❏`
+â•­â”€â *ã€Ž OWNER MENU ã€*
+â”‚âžª ${prefix}sewa
+â”‚âžª ${prefix}react [emoji]
+â”‚âžª ${prefix}chat [option]
+â”‚âžª ${prefix}join [link]
+â”‚âžª ${prefix}leave
+â”‚âžª ${prefix}block @user
+â”‚âžª ${prefix}unblock @user
+â”‚âžª ${prefix}bcgroup [text]
+â”‚âžª ${prefix}bcall [text]
+â”‚âžª ${prefix}setppbot [image]
+â”‚âžª ${prefix}setexif
+â”‚âžª ${prefix}setmenu [option]
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -3508,12 +3508,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -3524,69 +3524,69 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'groupmenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO KEANGGOTAAN 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 7.11 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-│ ➪ Deskripsi : Bot Ini Untuk Anggota 7.11
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO KEANGGOTAAN ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT FIANZZ ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â”‚ âžª Deskripsi : Bot Ini Untuk teman-teman saya cuy yudi
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 GROUP MENU 』*
-│➪ ${prefix}linkgroup
-│➪ ${prefix}ephemeral [option]
-│➪ ${prefix}setppgc [image]
-│➪ ${prefix}setname [text]
-│➪ ${prefix}setdesc [text]
-│➪ ${prefix}group [option]
-│➪ ${prefix}editinfo [option]
-│➪ ${prefix}add @user
-│➪ ${prefix}kick @user
-│➪ ${prefix}hidetag [text]
-│➪ ${prefix}tagall [text]
-│➪ ${prefix}totag [reply]
-│➪ ${prefix}antilink [on/off]
-│➪ ${prefix}mute [on/off]
-│➪ ${prefix}promote @user
-│➪ ${prefix}demote @user
-│➪ ${prefix}vote [text]
-│➪ ${prefix}devote
-│➪ ${prefix}upvote
-│➪ ${prefix}cekvote
-│➪ ${prefix}hapusvote
-╰───────────────❏`
+â•­â”€â *ã€Ž GROUP MENU ã€*
+â”‚âžª ${prefix}linkgroup
+â”‚âžª ${prefix}ephemeral [option]
+â”‚âžª ${prefix}setppgc [image]
+â”‚âžª ${prefix}setname [text]
+â”‚âžª ${prefix}setdesc [text]
+â”‚âžª ${prefix}group [option]
+â”‚âžª ${prefix}editinfo [option]
+â”‚âžª ${prefix}add @user
+â”‚âžª ${prefix}kick @user
+â”‚âžª ${prefix}hidetag [text]
+â”‚âžª ${prefix}tagall [text]
+â”‚âžª ${prefix}totag [reply]
+â”‚âžª ${prefix}antilink [on/off]
+â”‚âžª ${prefix}mute [on/off]
+â”‚âžª ${prefix}promote @user
+â”‚âžª ${prefix}demote @user
+â”‚âžª ${prefix}vote [text]
+â”‚âžª ${prefix}devote
+â”‚âžª ${prefix}upvote
+â”‚âžª ${prefix}cekvote
+â”‚âžª ${prefix}hapusvote
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: '7.11 Instagram��',
-                                    url: 'https://instagram.com/nirvanois.se'
+                                    displayText: 'Owner Instagram¸',
+                                    url: 'https://instagram.com/yudipermana.1'
                                 }
                                 }, {
                                 urlButton: {
@@ -3595,12 +3595,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -3611,69 +3611,69 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'webzonemenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 FUN MENU 』*
-│➪ ${prefix}playstore
-│➪ ${prefix}gsmarena
-│➪ ${prefix}jadwalbioskop
-│➪ ${prefix}nowplayingbioskop
-│➪ ${prefix}aminio
-│➪ ${prefix}wattpad
-│➪ ${prefix}webtoons
-│➪ ${prefix}drakor
-╰───────────────❏`
+â•­â”€â *ã€Ž FUN MENU ã€*
+â”‚âžª ${prefix}playstore
+â”‚âžª ${prefix}gsmarena
+â”‚âžª ${prefix}jadwalbioskop
+â”‚âžª ${prefix}nowplayingbioskop
+â”‚âžª ${prefix}aminio
+â”‚âžª ${prefix}wattpad
+â”‚âžª ${prefix}webtoons
+â”‚âžª ${prefix}drakor
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: '7.11 Instagram��',
-                                    url: 'https://instagram.com/nirvanois.se'
+                                    displayText: 'Ownee Instagram¸',
+                                    url: 'https://instagram.com/yudipermana.1'
                                 }
                                 }, {
                                 urlButton: {
-                                    displayText: 'Instagram owner',
+                                    displayText: 'Instagram Satrya',
                                     url: 'https://instagram.com/satrya_zz?igshid=YmMyMTA2M2Y='
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -3684,61 +3684,61 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'downloadermenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO KEANGGOTAAN 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 7.11 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO KEANGGOTAAN ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT YUDI ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 DOWNLOADER MENU 』*
-│➪ ${prefix}tiktoknowm [url]
-│➪ ${prefix}tiktokwm [url]
-│➪ ${prefix}tiktokmp3 [url]
-│➪ ${prefix}instagram [url]
-│➪ ${prefix}twitter [url]
-│➪ ${prefix}twittermp3 [url]
-│➪ ${prefix}facebook [url]
-│➪ ${prefix}pinterestdl [url]
-│➪ ${prefix}ytmp3 [url]
-│➪ ${prefix}ytmp4 [url]
-│➪ ${prefix}getmusic [query]
-│➪ ${prefix}getvideo [query]
-│➪ ${prefix}umma [url]
-│➪ ${prefix}joox [query]
-│➪ ${prefix}soundcloud [url]
-╰───────────────❏`
+â•­â”€â *ã€Ž DOWNLOADER MENU ã€*
+â”‚âžª ${prefix}tiktoknowm [url]
+â”‚âžª ${prefix}tiktokwm [url]
+â”‚âžª ${prefix}tiktokmp3 [url]
+â”‚âžª ${prefix}instagram [url]
+â”‚âžª ${prefix}twitter [url]
+â”‚âžª ${prefix}twittermp3 [url]
+â”‚âžª ${prefix}facebook [url]
+â”‚âžª ${prefix}pinterestdl [url]
+â”‚âžª ${prefix}ytmp3 [url]
+â”‚âžª ${prefix}ytmp4 [url]
+â”‚âžª ${prefix}getmusic [query]
+â”‚âžª ${prefix}getvideo [query]
+â”‚âžª ${prefix}umma [url]
+â”‚âžª ${prefix}joox [query]
+â”‚âžª ${prefix}soundcloud [url]
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -3748,12 +3748,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -3764,57 +3764,57 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'searchmenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 SEARCH MENU 』*
-│➪ ${prefix}play [query]
-│➪ ${prefix}yts [query]
-│➪ ${prefix}google [query]
-│➪ ${prefix}gimage [query]
-│➪ ${prefix}pinterest [query]
-│➪ ${prefix}wallpaper [query]
-│➪ ${prefix}wikimedia [query]
-│➪ ${prefix}ytsearch [query]
-│➪ ${prefix}ringtone [query]
-│➪ ${prefix}stalk [option] [query]
-╰───────────────❏`
+â•­â”€â *ã€Ž SEARCH MENU ã€*
+â”‚âžª ${prefix}play [query]
+â”‚âžª ${prefix}yts [query]
+â”‚âžª ${prefix}google [query]
+â”‚âžª ${prefix}gimage [query]
+â”‚âžª ${prefix}pinterest [query]
+â”‚âžª ${prefix}wallpaper [query]
+â”‚âžª ${prefix}wikimedia [query]
+â”‚âžª ${prefix}ytsearch [query]
+â”‚âžª ${prefix}ringtone [query]
+â”‚âžª ${prefix}stalk [option] [query]
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
                                     displayText: 'INSTAGRAM',
-                                    url: 'https://youtube.com/'
+                                    url: 'https://instagram.com/yudipermana.1'
                                 }
                                 }, {
                                 urlButton: {
@@ -3823,12 +3823,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -3839,59 +3839,59 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'randommenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 RANDOM MENU 』*
-│➪ ${prefix}coffe
-│➪ ${prefix}quotesanime
-│➪ ${prefix}motivasi
-│➪ ${prefix}dilanquote
-│➪ ${prefix}bucinquote
-│➪ ${prefix}katasenja
-│➪ ${prefix}puisi
-│➪ ${prefix}couple
-│➪ ${prefix}anime
-│➪ ${prefix}waifu
-│➪ ${prefix}husbu
-│➪ ${prefix}neko
-│➪ ${prefix}shinobu
-╰───────────────❏`
+â•­â”€â *ã€Ž RANDOM MENU ã€*
+â”‚âžª ${prefix}coffe
+â”‚âžª ${prefix}quotesanime
+â”‚âžª ${prefix}motivasi
+â”‚âžª ${prefix}dilanquote
+â”‚âžª ${prefix}bucinquote
+â”‚âžª ${prefix}katasenja
+â”‚âžª ${prefix}puisi
+â”‚âžª ${prefix}couple
+â”‚âžª ${prefix}anime
+â”‚âžª ${prefix}waifu
+â”‚âžª ${prefix}husbu
+â”‚âžª ${prefix}neko
+â”‚âžª ${prefix}shinobu
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -3901,12 +3901,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -3917,77 +3917,77 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
  case 'textpromenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 TEXT PRO MENU 』*
-│➪ ${prefix}3dchristmas
-│➪ ${prefix}3ddeepsea
-│➪ ${prefix}americanflag
-│➪ ${prefix}3dscifi
-│➪ ${prefix}3drainbow
-│➪ ${prefix}3dwaterpipe
-│➪ ${prefix}halloweenskeleton
-│➪ ${prefix}sketch
-│➪ ${prefix}bluecircuit
-│➪ ${prefix}space
-│➪ ${prefix}metallic
-│➪ ${prefix}fiction
-│➪ ${prefix}greenhorror
-│➪ ${prefix}transformer
-│➪ ${prefix}berry
-│➪ ${prefix}thunder
-│➪ ${prefix}magma
-│➪ ${prefix}3dcrackedstone
-│➪ ${prefix}3dneonlight
-│➪ ${prefix}impressiveglitch
-│➪ ${prefix}naturalleaves
-│➪ ${prefix}fireworksparkle
-│➪ ${prefix}matrix
-│➪ ${prefix}dropwater
-│➪ ${prefix}harrypotter
-│➪ ${prefix}foggywindow
-│➪ ${prefix}neondevils
-│➪ ${prefix}christmasholiday
-│➪ ${prefix}3dgradient
-│➪ ${prefix}blackpink
-│➪ ${prefix}gluetext
-╰───────────────❏`
+â•­â”€â *ã€Ž TEXT PRO MENU ã€*
+â”‚âžª ${prefix}3dchristmas
+â”‚âžª ${prefix}3ddeepsea
+â”‚âžª ${prefix}americanflag
+â”‚âžª ${prefix}3dscifi
+â”‚âžª ${prefix}3drainbow
+â”‚âžª ${prefix}3dwaterpipe
+â”‚âžª ${prefix}halloweenskeleton
+â”‚âžª ${prefix}sketch
+â”‚âžª ${prefix}bluecircuit
+â”‚âžª ${prefix}space
+â”‚âžª ${prefix}metallic
+â”‚âžª ${prefix}fiction
+â”‚âžª ${prefix}greenhorror
+â”‚âžª ${prefix}transformer
+â”‚âžª ${prefix}berry
+â”‚âžª ${prefix}thunder
+â”‚âžª ${prefix}magma
+â”‚âžª ${prefix}3dcrackedstone
+â”‚âžª ${prefix}3dneonlight
+â”‚âžª ${prefix}impressiveglitch
+â”‚âžª ${prefix}naturalleaves
+â”‚âžª ${prefix}fireworksparkle
+â”‚âžª ${prefix}matrix
+â”‚âžª ${prefix}dropwater
+â”‚âžª ${prefix}harrypotter
+â”‚âžª ${prefix}foggywindow
+â”‚âžª ${prefix}neondevils
+â”‚âžª ${prefix}christmasholiday
+â”‚âžª ${prefix}3dgradient
+â”‚âžª ${prefix}blackpink
+â”‚âžª ${prefix}gluetext
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -3997,12 +3997,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4013,58 +4013,58 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'photooxymenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 PHOTO OXY MENU 』*
-│➪ ${prefix}shadow
-│➪ ${prefix}romantic
-│➪ ${prefix}smoke
-│➪ ${prefix}burnpapper
-│➪ ${prefix}naruto
-│➪ ${prefix}lovemsg
-│➪ ${prefix}grassmsg
-│➪ ${prefix}lovetext
-│➪ ${prefix}coffecup
-│➪ ${prefix}butterfly
-│➪ ${prefix}harrypotter
-│➪ ${prefix}retrolol
-╰───────────────❏`
+â•­â”€â *ã€Ž PHOTO OXY MENU ã€*
+â”‚âžª ${prefix}shadow
+â”‚âžª ${prefix}romantic
+â”‚âžª ${prefix}smoke
+â”‚âžª ${prefix}burnpapper
+â”‚âžª ${prefix}naruto
+â”‚âžª ${prefix}lovemsg
+â”‚âžª ${prefix}grassmsg
+â”‚âžª ${prefix}lovetext
+â”‚âžª ${prefix}coffecup
+â”‚âžª ${prefix}butterfly
+â”‚âžª ${prefix}harrypotter
+â”‚âžª ${prefix}retrolol
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4074,12 +4074,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4090,55 +4090,55 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'ephotomenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 EPHOTO MENU 』*
-│➪ ${prefix}ffcover
-│➪ ${prefix}crossfire
-│➪ ${prefix}galaxy
-│➪ ${prefix}glass
-│➪ ${prefix}neon
-│➪ ${prefix}beach
-│➪ ${prefix}blackpink
-│➪ ${prefix}igcertificate
-│➪ ${prefix}ytcertificate
-╰───────────────❏`
+â•­â”€â *ã€Ž EPHOTO MENU ã€*
+â”‚âžª ${prefix}ffcover
+â”‚âžª ${prefix}crossfire
+â”‚âžª ${prefix}galaxy
+â”‚âžª ${prefix}glass
+â”‚âžª ${prefix}neon
+â”‚âžª ${prefix}beach
+â”‚âžª ${prefix}blackpink
+â”‚âžª ${prefix}igcertificate
+â”‚âžª ${prefix}ytcertificate
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4148,12 +4148,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4164,60 +4164,60 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'funmenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 FUN MENU 』*
-│➪ ${prefix}simih
-│➪ ${prefix}halah
-│➪ ${prefix}hilih
-│➪ ${prefix}huluh
-│➪ ${prefix}heleh
-│➪ ${prefix}holoh
-│➪ ${prefix}jadian
-│➪ ${prefix}jodohku
-│➪ ${prefix}delttt
-│➪ ${prefix}tictactoe
-│➪ ${prefix}family100
-│➪ ${prefix}tebak [option]
-│➪ ${prefix}math [mode]
-│➪ ${prefix}suitpvp [@tag]
-╰───────────────❏`
+â•­â”€â *ã€Ž FUN MENU ã€*
+â”‚âžª ${prefix}simih
+â”‚âžª ${prefix}halah
+â”‚âžª ${prefix}hilih
+â”‚âžª ${prefix}huluh
+â”‚âžª ${prefix}heleh
+â”‚âžª ${prefix}holoh
+â”‚âžª ${prefix}jadian
+â”‚âžª ${prefix}jodohku
+â”‚âžª ${prefix}delttt
+â”‚âžª ${prefix}tictactoe
+â”‚âžª ${prefix}family100
+â”‚âžª ${prefix}tebak [option]
+â”‚âžª ${prefix}math [mode]
+â”‚âžª ${prefix}suitpvp [@tag]
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4227,12 +4227,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4243,76 +4243,76 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'primbonmenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 PRIMBON MENU 』*
-│➪ ${prefix}nomorhoki
-│➪ ${prefix}artimimpi
-│➪ ${prefix}artinama
-│➪ ${prefix}ramaljodoh
-│➪ ${prefix}ramaljodohbali
-│➪ ${prefix}suamiistri
-│➪ ${prefix}ramalcinta
-│➪ ${prefix}cocoknama
-│➪ ${prefix}pasangan
-│➪ ${prefix}jadiannikah
-│➪ ${prefix}sifatusaha
-│➪ ${prefix}rezeki
-│➪ ${prefix}pekerjaan
-│➪ ${prefix}nasib
-│➪ ${prefix}penyakit
-│➪ ${prefix}tarot
-│➪ ${prefix}fengshui
-│➪ ${prefix}haribaik
-│➪ ${prefix}harisangar
-│➪ ${prefix}harisial
-│➪ ${prefix}nagahari
-│➪ ${prefix}arahrezeki
-│➪ ${prefix}peruntungan
-│➪ ${prefix}weton
-│➪ ${prefix}karakter
-│➪ ${prefix}keberuntungan
-│➪ ${prefix}memancing
-│➪ ${prefix}masasubur
-│➪ ${prefix}zodiak
-│➪ ${prefix}shio
-╰───────────────❏`
+â•­â”€â *ã€Ž PRIMBON MENU ã€*
+â”‚âžª ${prefix}nomorhoki
+â”‚âžª ${prefix}artimimpi
+â”‚âžª ${prefix}artinama
+â”‚âžª ${prefix}ramaljodoh
+â”‚âžª ${prefix}ramaljodohbali
+â”‚âžª ${prefix}suamiistri
+â”‚âžª ${prefix}ramalcinta
+â”‚âžª ${prefix}cocoknama
+â”‚âžª ${prefix}pasangan
+â”‚âžª ${prefix}jadiannikah
+â”‚âžª ${prefix}sifatusaha
+â”‚âžª ${prefix}rezeki
+â”‚âžª ${prefix}pekerjaan
+â”‚âžª ${prefix}nasib
+â”‚âžª ${prefix}penyakit
+â”‚âžª ${prefix}tarot
+â”‚âžª ${prefix}fengshui
+â”‚âžª ${prefix}haribaik
+â”‚âžª ${prefix}harisangar
+â”‚âžª ${prefix}harisial
+â”‚âžª ${prefix}nagahari
+â”‚âžª ${prefix}arahrezeki
+â”‚âžª ${prefix}peruntungan
+â”‚âžª ${prefix}weton
+â”‚âžª ${prefix}karakter
+â”‚âžª ${prefix}keberuntungan
+â”‚âžª ${prefix}memancing
+â”‚âžª ${prefix}masasubur
+â”‚âžª ${prefix}zodiak
+â”‚âžª ${prefix}shio
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4322,12 +4322,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4338,64 +4338,64 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'convertmenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 CONVERT MENU 』*
-│➪ ${prefix}attp
-│➪ ${prefix}ttp
-│➪ ${prefix}toimage
-│➪ ${prefix}removebg
-│➪ ${prefix}sticker
-│➪ ${prefix}stickerwm
-│➪ ${prefix}emojimix
-│➪ ${prefix}emojimix2
-│➪ ${prefix}tovideo
-│➪ ${prefix}togif
-│➪ ${prefix}tourl
-│➪ ${prefix}tovn
-│➪ ${prefix}tomp3
-│➪ ${prefix}toaudio
-│➪ ${prefix}ebinary
-│➪ ${prefix}dbinary
-│➪ ${prefix}styletext
-│➪ ${prefix}smeme
-╰───────────────❏`
+â•­â”€â *ã€Ž CONVERT MENU ã€*
+â”‚âžª ${prefix}attp
+â”‚âžª ${prefix}ttp
+â”‚âžª ${prefix}toimage
+â”‚âžª ${prefix}removebg
+â”‚âžª ${prefix}sticker
+â”‚âžª ${prefix}stickerwm
+â”‚âžª ${prefix}emojimix
+â”‚âžª ${prefix}emojimix2
+â”‚âžª ${prefix}tovideo
+â”‚âžª ${prefix}togif
+â”‚âžª ${prefix}tourl
+â”‚âžª ${prefix}tovn
+â”‚âžª ${prefix}tomp3
+â”‚âžª ${prefix}toaudio
+â”‚âžª ${prefix}ebinary
+â”‚âžª ${prefix}dbinary
+â”‚âžª ${prefix}styletext
+â”‚âžª ${prefix}smeme
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4405,12 +4405,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4421,56 +4421,56 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'mainmenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
            
-╭─❏ *『 MAIN MENU 』*
-│➪ ${prefix}ping
-│➪ ${prefix}owner
-│➪ ${prefix}menu / ${prefix}help / ${prefix}?
-│➪ ${prefix}delete
-│➪ ${prefix}infochat
-│➪ ${prefix}quoted
-│➪ ${prefix}listpc
-│➪ ${prefix}listgc
-│➪ ${prefix}listonline
-│➪ ${prefix}speedtest
-╰───────────────❏`
+â•­â”€â *ã€Ž MAIN MENU ã€*
+â”‚âžª ${prefix}ping
+â”‚âžª ${prefix}owner
+â”‚âžª ${prefix}menu / ${prefix}help / ${prefix}?
+â”‚âžª ${prefix}delete
+â”‚âžª ${prefix}infochat
+â”‚âžª ${prefix}quoted
+â”‚âžª ${prefix}listpc
+â”‚âžª ${prefix}listgc
+â”‚âžª ${prefix}listonline
+â”‚âžª ${prefix}speedtest
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4480,12 +4480,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4496,54 +4496,54 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'databasemenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 CODING MENU 』*
-│➪ ${prefix}setcmd
-│➪ ${prefix}listcmd
-│➪ ${prefix}delcmd
-│➪ ${prefix}lockcmd
-│➪ ${prefix}addmsg
-│➪ ${prefix}listmsg
-│➪ ${prefix}getmsg
-│➪ ${prefix}delmsg
-╰───────────────❏`
+â•­â”€â *ã€Ž CODING MENU ã€*
+â”‚âžª ${prefix}setcmd
+â”‚âžª ${prefix}listcmd
+â”‚âžª ${prefix}delcmd
+â”‚âžª ${prefix}lockcmd
+â”‚âžª ${prefix}addmsg
+â”‚âžª ${prefix}listmsg
+â”‚âžª ${prefix}getmsg
+â”‚âžª ${prefix}delmsg
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4553,12 +4553,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4569,50 +4569,50 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'anonymousmenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 ANONYMOUS MENU 』*
-│➪ ${prefix}anonymous
-│➪ ${prefix}start
-│➪ ${prefix}next
-│➪ ${prefix}keluar
-╰───────────────❏`
+â•­â”€â *ã€Ž ANONYMOUS MENU ã€*
+â”‚âžª ${prefix}anonymous
+â”‚âžª ${prefix}start
+â”‚âžª ${prefix}next
+â”‚âžª ${prefix}keluar
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4622,12 +4622,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4638,51 +4638,51 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'islamicmenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 ISLAMIC MENU 』*
-│➪ ${prefix}iqra
-│➪ ${prefix}hadist
-│➪ ${prefix}alquran
-│➪ ${prefix}juzamma
-│➪ ${prefix}tafsirsurah
-╰───────────────❏`
+â•­â”€â *ã€Ž ISLAMIC MENU ã€*
+â”‚âžª ${prefix}iqra
+â”‚âžª ${prefix}hadist
+â”‚âžª ${prefix}alquran
+â”‚âžª ${prefix}juzamma
+â”‚âžª ${prefix}tafsirsurah
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4692,12 +4692,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4708,57 +4708,57 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'voicechangermenu': {
 anu = `${ucapanWaktu} ${pushname}
-╭─❏ *『 INFO USER 』*
-│ ➪ Name : ${pushname}
-│ ➪ Number : ${m.sender.split('@')[0]}
-╰───────────────❏
-╭─❏ *『 INFO BOT 』*
-│ ➪ Prefix : ${prefix}
-│ ➪ Nama : ${global.namabot}
-│ ➪ Owner : ${global.namaowner}
-│ ➪ Mode : ${xavior.public ? 'Public' : 'Self'}
-│ ➪ Runtime : ${runtime(process.uptime())}
-│ ➪ Library : Baileys Multi Device
-╰───────────────❏
-╭─❏ *『 INFO SERVER 』*
-│ ➪ Tanggal : ${jangwak}
-│ ➪ Waktu : ${time}
-│ ➪ WIB : ${moment().utcOffset('+0700').format('HH:mm')}
-│ ➪ WIB : ${moment().utcOffset('+0900').format('HH:mm')}
-│ ➪ WITA : ${moment().utcOffset('+0800').format('HH:mm')}
-╰───────────────❏
+â•­â”€â *ã€Ž INFO USER ã€*
+â”‚ âžª Name : ${pushname}
+â”‚ âžª Number : ${m.sender.split('@')[0]}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO BOT ã€*
+â”‚ âžª Prefix : ${prefix}
+â”‚ âžª Nama : ${global.namabot}
+â”‚ âžª Owner : ${global.namaowner}
+â”‚ âžª Mode : ${xavior.public ? 'Public' : 'Self'}
+â”‚ âžª Runtime : ${runtime(process.uptime())}
+â”‚ âžª Library : Baileys Multi Device
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
+â•­â”€â *ã€Ž INFO SERVER ã€*
+â”‚ âžª Tanggal : ${jangwak}
+â”‚ âžª Waktu : ${time}
+â”‚ âžª WIB : ${moment().utcOffset('+0700').format('HH:mm')}
+â”‚ âžª WIB : ${moment().utcOffset('+0900').format('HH:mm')}
+â”‚ âžª WITA : ${moment().utcOffset('+0800').format('HH:mm')}
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
 
-╭─❏ *『 VOICE CHANGER MENU 』*
-│➪ ${prefix}bass
-│➪ ${prefix}blown
-│➪ ${prefix}deep
-│➪ ${prefix}earrape
-│➪ ${prefix}fast
-│➪ ${prefix}fat
-│➪ ${prefix}nightcore
-│➪ ${prefix}reverse
-│➪ ${prefix}robot
-│➪ ${prefix}slow
-│➪ ${prefix}tupai
-╰───────────────❏`
+â•­â”€â *ã€Ž VOICE CHANGER MENU ã€*
+â”‚âžª ${prefix}bass
+â”‚âžª ${prefix}blown
+â”‚âžª ${prefix}deep
+â”‚âžª ${prefix}earrape
+â”‚âžª ${prefix}fast
+â”‚âžª ${prefix}fat
+â”‚âžª ${prefix}nightcore
+â”‚âžª ${prefix}reverse
+â”‚âžª ${prefix}robot
+â”‚âžª ${prefix}slow
+â”‚âžª ${prefix}tupai
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4768,12 +4768,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4784,24 +4784,24 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
                    
             case 'menu': case 'help': case '?': {
-                anu = `${ucapanWaktu} Beban🙏\n\nI Am ${global.namabot}, Bot Ini Gak Secanggih Bot Ditahun 3000an.\n\nKarna ${global.namabot} Adalah Hasil Begadang Yudipermana.\n\nKalau Abng Makai Botnya Tapi Ngelag, Itu Karna Abang Wibu🗿`
+                anu = `${ucapanWaktu} BebanðŸ™\n\nI Am ${global.namabot}, Bot Ini Gak Secanggih Bot Ditahun 3000an.\n\nKarna ${global.namabot} Adalah Hasil Begadang Yudipermana.\n\nKalau Abng Makai Botnya Tapi Ngelag, Itu Karna Abang WibuðŸ—¿`
                 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4811,12 +4811,12 @@ let btn = [{
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Rules❗',
+                                    displayText: 'Rulesâ—',
                                     id: 'rules'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Owner👤',
+                                    displayText: 'OwnerðŸ‘¤',
                                     id: 'owner'
                                 }  
                             }, {
@@ -4827,29 +4827,29 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 
 case 'donasi': {
-anu = `╭─❏ *『 DONASI 』*
-│ ➪ Saweria : https://saweria.co/nanang13
-│ ➪ Pulsa : 081908052908
-╰───────────────❏
+anu = `â•­â”€â *ã€Ž DONASI ã€*
+â”‚ âžª Saweria : https://saweria.co/nanang13
+â”‚ âžª Pulsa : 081908052908
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â
 
-*TERIMA KASIH BUAT YANG SUDAH MAU DONASI🤗*`
+*TERIMA KASIH BUAT YANG SUDAH MAU DONASIðŸ¤—*`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4860,49 +4860,49 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
 case 'rules': {
 	anu = `*RULES*
-1. Jangan Pernah Spam Bot ❎
-2. Jangan Call Nomer Bot ❎
-3. Jangan Mengeksploitasi Bot ❎
+1. Jangan Pernah Spam Bot âŽ
+2. Jangan Call Nomer Bot âŽ
+3. Jangan Mengeksploitasi Bot âŽ
 4.  Jangan Report Error Males Coding
 5.  Ijin Ke Yudi Jika Ingin Memasukan Bot Ke Grup Lain
 6.  Penting!!!!!!! Ingat Save Nomer Owner
 Sanksi : *Warn/Soft Block*
 
-*About Questions⁉️*
+*About Questionsâ‰ï¸*
 
-👦 : Bot nya Slow Respon
-🤖 : Mohon Bersabar, Mungkin
+ðŸ‘¦ : Bot nya Slow Respon
+ðŸ¤– : Mohon Bersabar, Mungkin
 Kendala Dari Jaringan, Signal,
 Atau Bahkan Terbanned Dari
 Pihak WhatsApp
 
-👦 : Scriptnya Beli Dimana?
-🤖 : Script Gak Dijual, Tapi Bisa Cari Di YT XAVIOR13
+ðŸ‘¦ : Scriptnya Beli Dimana?
+ðŸ¤– : Script Gak Dijual, Tapi Bisa Cari Di YT XAVIOR13
 
-👦 : Boleh Masukin Ke Grup Saia
+ðŸ‘¦ : Boleh Masukin Ke Grup Saia
 Tidak?
-🤖 : Chat Wa Owner Aja Semoga Aja Boleh
+ðŸ¤– : Chat Wa Owner Aja Semoga Aja Boleh
 
-👦 : Apakah Bot Ini Masih
+ðŸ‘¦ : Apakah Bot Ini Masih
 Menyimpan File Yang Saya Kirim?
-🤖 : Tidak Bro Santai Saja
+ðŸ¤– : Tidak Bro Santai Saja
 
-👦 : Min, Ada Fitur Yang Error
-🤖 : Jika Menemukan Bug/Error
+ðŸ‘¦ : Min, Ada Fitur Yang Error
+ðŸ¤– : Jika Menemukan Bug/Error
 Silahkan Langsung Hubungi
 Owner/Creator Agar Segera Di Fix
 
@@ -4925,7 +4925,7 @@ Yang Sudah Membantu Dalam
 Pembuatan Bot Ini`
 let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -4951,15 +4951,15 @@ let btn = [{
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
@@ -4987,7 +4987,7 @@ Penyedia Rest Api :
 https://zenzapis.xyz`
 	let btn = [{
                                 urlButton: {
-                                    displayText: 'My Youtube️',
+                                    displayText: 'My Youtubeï¸',
                                     url: 'https://youtube.com/channel/UCKsPFZ8Y9tlwo7cMW1fXkww'
                                 }
                                 }, {
@@ -5013,15 +5013,15 @@ https://zenzapis.xyz`
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        xavior.send5ButImg(m.chat, anu, '©XaviorOfc', global.thumb, btn, global.thumb)
+                        xavior.send5ButImg(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn, global.thumb)
                         } else if (setbot.templateGif) {
-                        xavior.send5ButGif(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButGif(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateVid) {
-                        xavior.send5ButVid(m.chat, anu, '©XaviorOfc', global.visoka, btn, global.thumb)
+                        xavior.send5ButVid(m.chat, anu, 'Â©XaviorOfc', global.visoka, btn, global.thumb)
                         } else if (setbot.templateMsg) {
-                        xavior.send5ButMsg(m.chat, anu, '©XaviorOfc', btn)
+                        xavior.send5ButMsg(m.chat, anu, 'Â©XaviorOfc', btn)
                         } else if (setbot.templateLocation) {
-                        xavior.send5ButLoc(m.chat, anu, '©XaviorOfc', global.thumb, btn)
+                        xavior.send5ButLoc(m.chat, anu, 'Â©XaviorOfc', global.thumb, btn)
                         }
                      }
             break
